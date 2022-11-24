@@ -1,21 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../components/Loading';
 
 const ProductCategories = () => {
-    const categories = [
-        {
-            brandName: 'samsung',
-            img: "https://m.media-amazon.com/images/I/519l80S-uLL._AC_SX522_.jpg"
-        },
-        {
-            brandName: 'apple',
-            img: "https://www.gizmochina.com/wp-content/uploads/2019/09/Apple-iPhone-11-Pro-Max-1.jpg"
-        },
-        {
-            brandName: 'google',
-            img: "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-5-5g-1.jpg"
-        }
-    ]
+    
+    const { data: categories = [], isLoading } = useQuery({
+        queryKey: ['productCategories'],
+        queryFn: () => fetch(`http://localhost:5000/productCategories`)
+            .then(res => res.json())
+    })
+    if(isLoading){
+        return <Loading />
+    }
+
     return (
         <div className='container mx-auto py-[50px]'>
             <h1 className='text-2xl font-medium mb-7'>Explore Popular Brands</h1>
