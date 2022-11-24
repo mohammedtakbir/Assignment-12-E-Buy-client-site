@@ -7,7 +7,7 @@ import { AuthContext } from '../contexts/AuthProvider';
 const Login = () => {
     const [loginError, setLoginError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { userLogin } = useContext(AuthContext);
+    const { userLogin, googleAuthentication } = useContext(AuthContext);
 
     const handleLogin = (data) => {
         userLogin(data.email, data.password)
@@ -23,7 +23,12 @@ const Login = () => {
     };
 
     const handleGoogleLogIn = () => {
-
+        googleAuthentication()
+            .then(res => {
+                toast.success('Successfully Log In with google!');
+                console.log(res.user);
+            })
+            .catch(err => console.log(err))
     }
     return (
         <section className='py-[100px] flex justify-center'>
@@ -50,7 +55,7 @@ const Login = () => {
                         />
                         {errors.password && <p role="alert" className='text-red-500 text-sm'>{errors.password?.message}</p>}
                     </div>
-                    <button type="button"className='text-blue-500 text-sm hover:underline !mt-0'>
+                    <button type="button" className='text-blue-500 text-sm hover:underline !mt-0'>
                         Forgot Password
                     </button>
                     {loginError && <p className='text-red-500 !mt-0 text-sm'>{loginError}</p>}
