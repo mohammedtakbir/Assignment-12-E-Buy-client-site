@@ -15,12 +15,10 @@ const ProductCategory = () => {
     if (isLoading) {
         return <Loading />
     }
-    console.log(products);
+    
     return (
         <div className='container mx-auto'>
-            {brandName.brandName}
-            {products.length}
-            <div className='grid grid-cols-2 gap-6 py-20'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 py-20'>
                 {
                     products.map((product) => <ProductCard
                         product={product}
