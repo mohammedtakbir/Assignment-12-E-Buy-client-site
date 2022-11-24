@@ -22,7 +22,7 @@ const Banner = () => {
                 <div className="inset-y-0 right-0 w-full max-w-xl px-4 mx-auto lg:pl-8 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-1/2 lg:max-w-full lg:absolute xl:px-0">
                     <img
                         className="object-cover w-full rounded shadow-lg lg:rounded-none lg:shadow-none sm:h-96 lg:h-full"
-                        src="https://www.gannett-cdn.com/presto/2021/11/22/USAT/09a0849b-1dbb-46af-b8db-4de7df4770b9-Smart_phone_mini_round_up.png?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                        src="https://assets.reedpopcdn.com/Phone-Deals.png/BROK/resize/1200x1200%3E/format/jpg/quality/70/Phone-Deals.png?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
                         alt=""
                     />
                 </div>
@@ -30,5 +30,5 @@ const Banner = () => {
         </div>
     );
 };
-
+// https://www.gannett-cdn.com/presto/2021/11/22/USAT/09a0849b-1dbb-46af-b8db-4de7df4770b9-Smart_phone_mini_round_up.png
 export default Banner;
