@@ -62,8 +62,6 @@ const Signup = () => {
                             {...register('password',
                                 {
                                     required: 'Password is Required',
-                                    minLength: { value: 6, message: 'Password should be at least 6 character' },
-
                                     //*  Minimum eight characters, at least one letter and one number:
                                     pattern: { value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, message: ' Minimum eight characters, at least one letter and one number' }
                                 }
