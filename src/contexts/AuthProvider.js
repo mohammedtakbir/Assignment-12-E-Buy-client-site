@@ -24,26 +24,31 @@ const AuthProvider = ({ children }) => {
 
     //* create an user
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
     //* login an user
     const userLogin = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     };
 
     //* sign out
     const userSignOut = () => {
+        setLoading(true);
         return signOut(auth)
     };
 
     //* Update a user's profile
     const updateUserProfile = (userInfo) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, userInfo)
     };
 
     //* sign in with google
     const googleAuthentication = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
