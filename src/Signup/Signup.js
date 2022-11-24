@@ -9,20 +9,80 @@ import { AuthContext } from '../contexts/AuthProvider';
 const Signup = () => {
     const [signUpError, setSignupError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, googleAuthentication } = useContext(AuthContext);
+    const { createUser, googleAuthentication, updateUserProfile } = useContext(AuthContext);
 
     const handleSignUp = (data) => {
-        createUser(data.email, data.password)
-            .then(res => {
-                setSignupError('');
+        if (data.accountType === 'seller') {
+            createUser(data.email, data.password)
+                .then(res => {
+                    saveSellerInfo(data.name, data.email, data.accountType);
+                    handleUpdateUserProfile(data.name);
+
+                    setSignupError('');
+                    toast.success('Sign Up Successfully!');
+                    console.log(res.user);
+                })
+                .catch(err => {
+                    setSignupError(err.message);
+                    console.error(err);
+                })
+        } else {
+            createUser(data.email, data.password)
+                .then(res => {
+                    saveBuyerInfo(data.name, data.email, data.accountType);
+                    handleUpdateUserProfile(data.name);
+                    setSignupError('');
+                    console.log(res.user);
+                })
+                .catch(err => {
+                    setSignupError(err.message);
+                    console.error(err);
+                })
+        }
+    };
+
+    //* store seller info
+    const saveSellerInfo = (name, email, accountType) => {
+        const seller = { email, name, role: accountType };
+        fetch('http://localhost:5000/sellers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(seller)
+        })
+            .then(res => res.json())
+            .then(data => {
                 toast.success('Sign Up Successfully!');
-                console.log(res.user);
-            })
-            .catch(err => {
-                setSignupError(err.message);
-                console.error(err);
+                console.log(data)
             })
     };
+
+    //* store buyer info
+    const saveBuyerInfo = (name, email, accountType) => {
+        const buyer = { email, name, role: accountType };
+        fetch('http://localhost:5000/buyers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(buyer)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Sign Up Successfully!');
+                console.log(data)
+            })
+    };
+
+    const handleUpdateUserProfile = (name) => {
+        const userInfo = {
+            displayName: name
+        }
+        updateUserProfile(userInfo)
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
 
     const handleGoogleSignUp = () => {
         googleAuthentication()
@@ -76,6 +136,11 @@ const Signup = () => {
                         />
                         {errors.password && <p role='alert' className='text-red-500 text-sm'>{errors.password?.message}</p>}
                     </div>
+                    <p className='pb-2 text-sm font-medium text-gray-900'>What type of account you want?</p>
+                    <select {...register('accountType')} className="select select-bordered w-full max-w-xs !mt-0">
+                        <option value='seller'>Seller</option>
+                        <option value='buyer' selected>Buyer</option>
+                    </select>
                     <button type="submit" className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
                     <div className="text-sm font-medium text-gray-500 !mt-3 text-center">
                         Already have an account? <Link to="/login" className="text-blue-500 hover:underline">Login</Link>
