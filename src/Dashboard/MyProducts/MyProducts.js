@@ -25,7 +25,6 @@ const MyProducts = () => {
     }
 
     const handleDeleteProduct = (product) => {
-        console.log(product._id)
         fetch(`http://localhost:5000/products/${product._id}`, {
             method: 'DELETE',
         })
@@ -85,9 +84,10 @@ const MyProducts = () => {
             </div>
             {deletingProduct &&
                 <DeleteConfirmationModal
+                    title={`Are you sure you want to delete this Product?`}
                     closeModal={closeModal}
-                    deletingProduct={deletingProduct}
-                    handleDeleteProduct={handleDeleteProduct}
+                    modalData={deletingProduct}
+                    successAction={handleDeleteProduct}
                 />}
         </>
     );

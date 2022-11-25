@@ -15,9 +15,8 @@ const Signup = () => {
         if (data.accountType === 'seller') {
             createUser(data.email, data.password)
                 .then(res => {
-                    saveSellerInfo(data.name, data.email, data.accountType);
+                    saveSellerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
-
                     setSignupError('');
                     console.log(res.user);
                 })
@@ -28,7 +27,7 @@ const Signup = () => {
         } else {
             createUser(data.email, data.password)
                 .then(res => {
-                    saveUserInfo(data.name, data.email);
+                    saveBuyerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
                     setSignupError('');
                     console.log(res.user);
@@ -57,22 +56,6 @@ const Signup = () => {
             })
     };
 
-    //* store default user info
-    const saveUserInfo = (name, email) => {
-        const user = { email, name };
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('Sign Up Successfully!');
-                console.log(data)
-            })
-    };
 
     const handleUpdateUserProfile = (name) => {
         const userInfo = {
@@ -86,11 +69,27 @@ const Signup = () => {
     const handleGoogleSignUp = () => {
         googleAuthentication()
             .then(res => {
-                toast.success('Successfully Sign Up with google!');
-                console.log(res.user);
+                saveBuyerInfo(res.user.displayName, res.user.email, 'buyer')
             })
             .catch(err => console.log(err))
     }
+
+    //* store buyer info
+    const saveBuyerInfo = (name, email, accountType) => {
+        const user = { email, name, role: accountType };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Sign Up Successfully!');
+                console.log(data)
+            })
+    };
 
     return (
         <section className='py-[100px] flex justify-center'>
@@ -137,7 +136,7 @@ const Signup = () => {
                     <p className='pb-2 text-sm font-medium text-gray-900'>What type of account you want?</p>
                     <select {...register('accountType')} className="select select-bordered w-full max-w-xs !mt-0">
                         <option value='seller'>Seller</option>
-                        <option selected>Default</option>
+                        <option selected value='buyer'>Buyer</option>
                     </select>
                     <button type="submit" className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
                     <div className="text-sm font-medium text-gray-500 !mt-3 text-center">

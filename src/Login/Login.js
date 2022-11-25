@@ -29,11 +29,27 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         googleAuthentication()
             .then(res => {
-                toast.success('Successfully Log In with google!');
-                console.log(res.user);
+                saveBuyerInfo(res.user.displayName, res.user.email, 'buyer');
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
+
+    //* store buyer info
+    const saveBuyerInfo = (name, email, accountType) => {
+        const user = { email, name, role: accountType };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Log In Successfully!');
+                console.log(data)
+            })
+    };
     return (
         <section className='py-[100px] flex justify-center'>
             <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7 sm:mx-0 mx-2">

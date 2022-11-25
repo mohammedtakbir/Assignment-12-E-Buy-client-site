@@ -9,6 +9,8 @@ import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
 import MyOrders from "../Dashboard/MyOrders/MyOrders";
 import AddAProducts from "../Dashboard/AddAProducts/AddAProducts";
 import MyProducts from "../Dashboard/MyProducts/MyProducts";
+import AllBuyers from "../Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../Dashboard/AllSellers/AllSellers";
 
 export const router = createBrowserRouter([
     {
@@ -43,11 +45,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addAProducts',
-                element: <AddAProducts/>
+                element: <AddAProducts />
             },
             {
                 path: '/dashboard/myProducts',
                 element: <MyProducts />
+            },
+            {
+                path: '/dashboard/allSellers',
+                element: <AllSellers />
+            },
+            {
+                path: '/dashboard/allBuyers',
+                element: <AllBuyers />
             },
         ]
     }
