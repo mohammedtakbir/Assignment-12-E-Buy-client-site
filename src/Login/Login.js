@@ -15,7 +15,7 @@ const Login = () => {
     const handleLogin = (data) => {
         userLogin(data.email, data.password)
             .then(res => {
-                navigate(from);
+                navigate(from, { replace: true });
                 setLoginError('');
                 toast.success('Log In Successfully!');
                 console.log(res.user);
