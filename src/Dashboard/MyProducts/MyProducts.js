@@ -48,7 +48,7 @@ const MyProducts = () => {
                         <tr>
                             <th></th>
                             <th>Product Image</th>
-                            <th>Price</th>
+                            <th>Model Name</th>
                             <th>Price</th>
                             <th>Sales Status</th>
                             <th>Advertise</th>
