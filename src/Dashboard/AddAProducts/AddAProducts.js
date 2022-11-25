@@ -41,7 +41,8 @@ const AddAProducts = () => {
             condition,
             purchase_year,
             mobile_number,
-            description
+            description,
+            sellerEmail: user?.email
         };
         console.log(product)
 

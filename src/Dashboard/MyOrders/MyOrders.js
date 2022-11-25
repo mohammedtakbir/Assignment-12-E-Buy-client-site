@@ -24,7 +24,7 @@ const Orders = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Avatar</th>
+                            <th>Product Image</th>
                             <th>Title</th>
                             <th>Price</th>
                             <th>Payment</th>    

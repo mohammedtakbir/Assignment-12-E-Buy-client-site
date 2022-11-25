@@ -37,7 +37,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                         <p className='text-sm text-gray-500 lg:w-1/2'>Resale Price: ${resale_price}</p>
                     </div>
                     <div className='lg:flex  justify-between mb-4 w-1/2'>
-                        <p className='text-sm text-gray-500'>Year of use: {year_of_use} year</p>
+                        <p className='text-sm text-gray-500'>Year of use: {year_of_use}</p>
                     </div>
                     <div className='lg:flex  justify-between mb-2'>
                         <p className='text-sm text-gray-500 lg:w-1/2'>Location: {location}</p>
