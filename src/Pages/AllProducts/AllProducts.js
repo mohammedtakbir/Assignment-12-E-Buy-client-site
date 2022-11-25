@@ -10,7 +10,7 @@ const ProductCategory = () => {
     const name = useParams();
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { data: products = [], isLoading } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', name],
         queryFn: () => fetch(`http://localhost:5000/products/${name.name}`)
             .then(res => res.json())
     })

@@ -19,7 +19,6 @@ const Signup = () => {
                     handleUpdateUserProfile(data.name);
 
                     setSignupError('');
-                    toast.success('Sign Up Successfully!');
                     console.log(res.user);
                 })
                 .catch(err => {
@@ -29,7 +28,7 @@ const Signup = () => {
         } else {
             createUser(data.email, data.password)
                 .then(res => {
-                    saveBuyerInfo(data.name, data.email, data.accountType);
+                    saveUserInfo(data.name, data.email);
                     handleUpdateUserProfile(data.name);
                     setSignupError('');
                     console.log(res.user);
@@ -43,13 +42,13 @@ const Signup = () => {
 
     //* store seller info
     const saveSellerInfo = (name, email, accountType) => {
-        const seller = { email, name, role: accountType };
-        fetch('http://localhost:5000/sellers', {
+        const user = { email, name, role: accountType };
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(seller)
+            body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(data => {
@@ -58,15 +57,15 @@ const Signup = () => {
             })
     };
 
-    //* store buyer info
-    const saveBuyerInfo = (name, email, accountType) => {
-        const buyer = { email, name, role: accountType };
-        fetch('http://localhost:5000/buyers', {
+    //* store default user info
+    const saveUserInfo = (name, email) => {
+        const user = { email, name };
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(buyer)
+            body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(data => {
@@ -127,7 +126,6 @@ const Signup = () => {
                             {...register('password',
                                 {
                                     required: 'Password is Required',
-                                    //*  Minimum eight characters, at least one letter and one number:
                                     pattern: { value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, message: ' Minimum eight characters, at least one letter and one number' }
                                 }
                             )}
@@ -139,7 +137,7 @@ const Signup = () => {
                     <p className='pb-2 text-sm font-medium text-gray-900'>What type of account you want?</p>
                     <select {...register('accountType')} className="select select-bordered w-full max-w-xs !mt-0">
                         <option value='seller'>Seller</option>
-                        <option value='buyer' selected>Buyer</option>
+                        <option selected>Default</option>
                     </select>
                     <button type="submit" className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
                     <div className="text-sm font-medium text-gray-500 !mt-3 text-center">
