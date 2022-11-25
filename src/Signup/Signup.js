@@ -3,13 +3,21 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import { useToken } from '../Hooks/useToken';
 
 const Signup = () => {
     const [signUpError, setSignupError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, googleAuthentication, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+
+    const [token] = useToken(createdUserEmail);
+    if (token) {
+        navigate('/');
+    }
 
     const handleSignUp = (data) => {
         if (data.accountType === 'seller') {
@@ -53,6 +61,7 @@ const Signup = () => {
             .then(data => {
                 toast.success('Sign Up Successfully!');
                 console.log(data)
+                setCreatedUserEmail(email);
             })
     };
 
@@ -69,6 +78,7 @@ const Signup = () => {
     const handleGoogleSignUp = () => {
         googleAuthentication()
             .then(res => {
+                setCreatedUserEmail(res.user.email);
                 saveBuyerInfo(res.user.displayName, res.user.email, 'buyer')
             })
             .catch(err => console.log(err))
@@ -86,6 +96,7 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setCreatedUserEmail(email);
                 toast.success('Sign Up Successfully!');
                 console.log(data)
             })

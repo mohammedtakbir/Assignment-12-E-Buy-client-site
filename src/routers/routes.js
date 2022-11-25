@@ -11,7 +11,7 @@ import AddAProducts from "../Dashboard/AddAProducts/AddAProducts";
 import MyProducts from "../Dashboard/MyProducts/MyProducts";
 import AllBuyers from "../Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Dashboard/AllSellers/AllSellers";
-import Blogs from "../Blogs/Blogs";
+import Blogs from "../Pages/Blogs/Blogs";
 
 export const router = createBrowserRouter([
     {

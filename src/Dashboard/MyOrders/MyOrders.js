@@ -5,17 +5,26 @@ import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Orders = () => {
-    const { user } = useContext(AuthContext);
+    const { user, userSignOut } = useContext(AuthContext);
 
     const { data: orders = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/bookings?email=${user?.email}`)
-            .then(res => res.json())
+        queryFn: () => fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+                    userSignOut()
+                }
+                return res.json();
+            })
     })
-    if(isLoading){
+    if (isLoading) {
         return <Loading />
     }
-    
+
     return (
         <div>
             <h2 className='text-2xl font-semibold my-5'>My Orders</h2>
@@ -27,7 +36,7 @@ const Orders = () => {
                             <th>Product Image</th>
                             <th>Title</th>
                             <th>Price</th>
-                            <th>Payment</th>    
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
