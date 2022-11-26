@@ -13,11 +13,13 @@ import AllBuyers from "../Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Dashboard/AllSellers/AllSellers";
 import Blogs from "../Pages/Blogs/Blogs";
 import Payment from "../Pages/Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -43,6 +45,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
+        errorElement: <ErrorPage />,
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {

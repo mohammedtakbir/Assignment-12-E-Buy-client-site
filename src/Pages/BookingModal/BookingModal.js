@@ -8,6 +8,7 @@ const BookingModal = ({ selectedProduct, closeModal }) => {
     const { model_name, resale_price, image, _id } = selectedProduct;
 
     const handleBooking = (e) => {
+
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -39,10 +40,12 @@ const BookingModal = ({ selectedProduct, closeModal }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast.success(`${model_name} is booked successfully!`)
+
                 } else {
                     toast.error(data.message)
                 }
             })
+
     };
 
     return (
