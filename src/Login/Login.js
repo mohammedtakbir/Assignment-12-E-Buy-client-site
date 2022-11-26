@@ -6,6 +6,8 @@ import { AuthContext } from '../contexts/AuthProvider';
 import { useToken } from '../Hooks/useToken';
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
+    const [googleLoading, setGoogleLoading] = useState(false);
     const [loginError, setLoginError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { userLogin, googleAuthentication } = useContext(AuthContext);
@@ -21,26 +23,32 @@ const Login = () => {
     }
 
     const handleLogin = (data) => {
+        setLoading(true);
         userLogin(data.email, data.password)
             .then(res => {
+                setLoading(false);
                 setLoginUserEmail(data.email);
                 setLoginError('');
                 toast.success('Log In Successfully!');
-                console.log(res.user);
             })
             .catch(err => {
+                setLoading(false);
                 setLoginError(err.message);
                 console.error(err);
             })
     };
 
     const handleGoogleLogIn = () => {
+        setGoogleLoading(true);
         googleAuthentication()
             .then(res => {
                 setLoginUserEmail(res.user.email);
                 saveBuyerInfo(res.user.displayName, res.user.email, 'buyer');
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                setGoogleLoading(false);
+            })
     }
 
     //* store buyer info
@@ -55,8 +63,11 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setGoogleLoading(false);
                 toast.success('Log In Successfully!');
-                console.log(data)
+            })
+            .catch(err => {
+                setGoogleLoading(false);
             })
     };
     return (
@@ -90,7 +101,7 @@ const Login = () => {
                     {loginError && <p className='text-red-500 !mt-0 text-sm'>{loginError}</p>}
                     <button
                         type="submit"
-                        className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
+                        className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{loading ? 'Loading...' : 'Login'}</button>
                     <div className="text-sm text-gray-500 !mt-3 text-center">
                         New to E-Bay? <Link to="/signup" className="text-blue-500 hover:underline">Create new account</Link>
                     </div>
@@ -109,7 +120,7 @@ const Login = () => {
                             viewBox="0 0 488 512"><path
                                 fill="currentColor"
                                 d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                        CONTINUE WITH GOOGLE
+                        {googleLoading ? 'LOADING...' : 'CONTINUE WITH GOOGLE'}
                     </button>
                 </div>
             </div>

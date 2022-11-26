@@ -8,6 +8,8 @@ import { AuthContext } from '../contexts/AuthProvider';
 import { useToken } from '../Hooks/useToken';
 
 const Signup = () => {
+    const [loading, setLoading] = useState(false);
+    const [googleLoading, setGoogleLoading] = useState(false);
     const [signUpError, setSignupError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, googleAuthentication, updateUserProfile } = useContext(AuthContext);
@@ -20,15 +22,16 @@ const Signup = () => {
     }
 
     const handleSignUp = (data) => {
+        setLoading(true);
         if (data.accountType === 'seller') {
             createUser(data.email, data.password)
                 .then(res => {
                     saveSellerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
                     setSignupError('');
-                    console.log(res.user);
                 })
                 .catch(err => {
+                    setLoading(false);
                     setSignupError(err.message);
                     console.error(err);
                 })
@@ -38,9 +41,9 @@ const Signup = () => {
                     saveBuyerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
                     setSignupError('');
-                    console.log(res.user);
                 })
                 .catch(err => {
+                    setLoading(false);
                     setSignupError(err.message);
                     console.error(err);
                 })
@@ -59,9 +62,12 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setLoading(false);
                 toast.success('Sign Up Successfully!');
-                console.log(data)
                 setCreatedUserEmail(email);
+            })
+            .catch(err => {
+                setLoading(false);
             })
     };
 
@@ -76,12 +82,16 @@ const Signup = () => {
     }
 
     const handleGoogleSignUp = () => {
+        setGoogleLoading(true);
         googleAuthentication()
             .then(res => {
                 setCreatedUserEmail(res.user.email);
                 saveBuyerInfo(res.user.displayName, res.user.email, 'buyer')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setGoogleLoading(false);
+                console.error(err)
+            })
     }
 
     //* store buyer info
@@ -96,9 +106,15 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setGoogleLoading(false);
+                setLoading(false);
                 setCreatedUserEmail(email);
                 toast.success('Sign Up Successfully!');
                 console.log(data)
+            })
+            .catch(err => {
+                setGoogleLoading(false);
+                setLoading(false);
             })
     };
 
@@ -149,7 +165,7 @@ const Signup = () => {
                         <option value='seller'>Seller</option>
                         <option selected value='buyer'>Buyer</option>
                     </select>
-                    <button type="submit" className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign Up</button>
+                    <button type="submit" className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{loading ? 'Loading...' : 'Sign Up'}</button>
                     <div className="text-sm font-medium text-gray-500 !mt-3 text-center">
                         Already have an account? <Link to="/login" className="text-blue-500 hover:underline">Login</Link>
                     </div>
@@ -168,7 +184,7 @@ const Signup = () => {
                             viewBox="0 0 488 512"><path
                                 fill="currentColor"
                                 d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                        CONTINUE WITH GOOGLE
+                        {googleLoading ? 'LOADING...' : 'CONTINUE WITH GOOGLE'}
                     </button>
                 </div>
             </div>

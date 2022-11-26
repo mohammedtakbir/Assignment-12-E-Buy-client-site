@@ -19,7 +19,7 @@ const Payment = () => {
     if (isLoading) {
         return <Loading />
     }
-    console.log(order)
+    
     return (
         <div className='border shadow-lg max-w-sm p-4 rounded-md'>
             <div className='mb-3'>
