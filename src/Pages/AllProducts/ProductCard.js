@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { HiCheckCircle } from "react-icons/hi";
 
 const ProductCard = ({ product, setSelectedProduct }) => {
+    
     const { image,
         brand,
         location,
@@ -14,8 +15,9 @@ const ProductCard = ({ product, setSelectedProduct }) => {
         post_time,
         purchase_year,
         resale_price,
-        seller,
-        year_of_use } = product
+        seller_name,
+        seller_verify,
+        year_of_use } = product;
     return (
         <>
             <div className="bg-white border border-gray-200 rounded-lg shadow-md h-full p-5">
@@ -26,7 +28,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                     <p className='text-xl font-semibold mb-4'>{model_name}</p>
                     <div className='lg:flex justify-between mb-2'>
                         <p className='text-sm text-gray-500 lg:w-1/2'>Brand Name: {brand}</p>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Seller: {seller.name} {seller.verify ? <HiCheckCircle className='text-blue-500 text-lg inline' /> : ''}</p>
+                        <p className='text-sm text-gray-500 lg:w-1/2'>Seller: {seller_name} {seller_verify ? <HiCheckCircle className='text-blue-500 text-lg inline' /> : ''}</p>
                     </div>
                     <div className='lg:flex  justify-between mb-2'>
                         <p className='text-sm text-gray-500 lg:w-1/2'>Condition: {condition}</p>

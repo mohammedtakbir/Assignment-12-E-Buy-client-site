@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
 
@@ -15,7 +16,7 @@ const Orders = () => {
             }
         })
             .then(res => {
-                if(res.status === 401 || res.status === 403){
+                if (res.status === 401 || res.status === 403) {
                     userSignOut()
                 }
                 return res.json();
@@ -55,7 +56,12 @@ const Orders = () => {
                                     <td>{order.ProductName}</td>
                                     <td>${order.price}</td>
                                     <td>
-                                        <button className='btn btn-sm'>Pay</button>
+                                        {order.paid ?
+                                            <span className='text-green-500'>Paid</span> :
+                                            <Link to={`/dashboard/payment/${order._id}`}>
+
+                                                <button className='btn btn-sm'>Pay</button>
+                                            </Link>}
                                     </td>
                                 </tr>
                             ))

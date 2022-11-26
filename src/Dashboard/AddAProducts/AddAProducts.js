@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -6,6 +7,13 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddAProducts = () => {
     const { user } = useContext(AuthContext);
+
+    const { data: isVerified = [] } = useQuery({
+        queryKey: [''],
+        queryFn: () => fetch(`http://localhost:5000/users/verify?email=${user?.email}`)
+            .then(res => res.json())
+    })
+    console.log(isVerified)
     const navigate = useNavigate();
     const handleAddProduct = (e) => {
         e.preventDefault();
@@ -35,14 +43,13 @@ const AddAProducts = () => {
             original_price,
             year_of_use,
             post_time,
-            seller: {
-                name: sellerName
-            },
+            seller_name: sellerName,
             condition,
             purchase_year,
             mobile_number,
             description,
-            sellerEmail: user?.email
+            sellerEmail: user?.email,
+            seller_verify: isVerified.isVerified
         };
         console.log(product)
 

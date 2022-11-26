@@ -23,7 +23,7 @@ const AllSellers = () => {
 
     const handleDeleteSeller = (seller) => {
         fetch(`http://localhost:5000/users/sellers/${seller._id}`, {
-            method: 'DELETE',   
+            method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
@@ -32,6 +32,22 @@ const AllSellers = () => {
                     toast.success(`${seller.name} is deleted successfully.`)
                     console.log(data);
                     setDeletingSeller(null);
+                }
+            })
+    };
+
+    const handleVerified = (email, id) => {
+        fetch(`http://localhost:5000/products/?email=${email}&id=${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    toast.success('Verification Successful')
                 }
             })
     }
@@ -46,6 +62,7 @@ const AllSellers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Verification</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -55,6 +72,10 @@ const AllSellers = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
+                                <td>
+                                    {!seller.seller_verify &&
+                                        <button onClick={() => handleVerified(seller.email, seller._id)} className='btn btn-sm'>Verified</button>}
+                                </td>
                                 <td>
                                     <label onClick={() => setDeletingSeller(seller)} htmlFor="delete-modal" className="btn btn-sm bg-red-500 border-red-500 hover:border-red-500 hover:bg-red-500">Delete</label>
                                 </td>
