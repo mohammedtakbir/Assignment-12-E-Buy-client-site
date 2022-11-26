@@ -9,7 +9,7 @@ const AddAProducts = () => {
     const { user } = useContext(AuthContext);
 
     const { data: isVerified = [] } = useQuery({
-        queryKey: [''],
+        queryKey: ['users', user?.email],
         queryFn: () => fetch(`http://localhost:5000/users/verify?email=${user?.email}`)
             .then(res => res.json())
     })
@@ -49,7 +49,8 @@ const AddAProducts = () => {
             mobile_number,
             description,
             sellerEmail: user?.email,
-            seller_verify: isVerified.isVerified
+            seller_verify: isVerified.isVerified,
+            status: 'available'
         };
         console.log(product)
 

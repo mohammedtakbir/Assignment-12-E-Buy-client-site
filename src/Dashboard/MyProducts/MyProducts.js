@@ -10,6 +10,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
+    const [isAdvertise, setIsAdvertise] = useState(false);
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
@@ -35,6 +36,24 @@ const MyProducts = () => {
                     toast.success(`${product.model_name} is deleted successfully.`)
                     console.log(data);
                     setDeletingProduct(null);
+                }
+            })
+    };
+
+    const handleAdvertiseItem = (product) => {
+        fetch('http://localhost:5000/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success(`This product is Advertised`);
+                    setIsAdvertise(true);
                 }
             })
     }
@@ -67,14 +86,22 @@ const MyProducts = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{product.model_name}</td>
-                                    <td>${product.resale_price}</td>
-                                    <td>Available</td>
+                                    <td className='font-medium'>{product.model_name}</td>
+                                    <td className='font-medium'>${product.resale_price}</td>
+                                    <td className='capitalize font-medium'>{product.status}</td>
                                     <td>
-                                        <button className='btn btn-sm'>Advertise</button>
+                                        <button
+                                            onClick={() => handleAdvertiseItem(product)}
+                                            disabled={(product.status === 'sold' || isAdvertise === true) && true}
+                                            className='btn btn-sm'>{isAdvertise ? 'Advertised' : 'Advertise'}</button>
                                     </td>
                                     <td>
-                                        <label onClick={() => setDeletingProduct(product)} htmlFor="delete-modal" className="btn btn-sm bg-red-500 border-red-500 hover:border-red-500 hover:bg-red-500">Delete</label>
+                                        <label
+                                            onClick={() => setDeletingProduct(product)}
+                                            htmlFor="delete-modal"
+                                            className="btn btn-sm bg-red-500 border-red-500 hover:border-red-500 hover:bg-red-500">
+                                            Delete
+                                        </label>
                                     </td>
                                 </tr>
                             ))

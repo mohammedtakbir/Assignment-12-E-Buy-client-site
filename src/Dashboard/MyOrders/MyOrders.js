@@ -26,6 +26,8 @@ const Orders = () => {
         return <Loading />
     }
 
+    console.log(orders)
+
     return (
         <div>
             <h2 className='text-2xl font-semibold my-5'>My Orders</h2>
