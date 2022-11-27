@@ -30,7 +30,7 @@ const Orders = () => {
         <div>
             <h2 className='text-2xl font-semibold my-5'>My Orders</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-[800px]">
                     <thead>
                         <tr>
                             <th></th>

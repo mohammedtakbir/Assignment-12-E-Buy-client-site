@@ -17,7 +17,7 @@ const ProductCategories = () => {
     return (
         <div className='container mx-auto py-[50px]'>
             <h1 className='text-2xl font-medium mb-7'>Explore Popular Brands</h1>
-            <div className='grid grid-cols-3'>
+            <div className='grid grid-cols-4'>
                 {categories.map((category) => (
 
                     <Link key={category._id} to={`/category/${category.name}`} className='mx-2 uppercase hover:underline text-center font-medium'>

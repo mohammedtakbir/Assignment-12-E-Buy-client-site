@@ -62,7 +62,7 @@ const AllSellers = () => {
         <>
             <h2 className='text-2xl font-semibold my-4'>All Sellers</h2>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-[1000px]">
                     <thead>
                         <tr>
                             <th></th>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { useAdmin } from '../../Hooks/useAdmin';
 import { useSeller } from '../../Hooks/useSeller';
@@ -24,8 +24,22 @@ const DashboardLayout = () => {
                     <ul className="menu p-4 w-80 lg:bg-transparent bg-base-100 text-base-content">
                         {isSeller ?
                             <>
-                                <li><Link to='/dashboard/addAProducts'>Add A Product</Link></li>
-                                <li><Link to='/dashboard/myProducts'>My Products</Link></li>
+                                <li>
+                                    <NavLink
+                                        className='active:bg-transparent'
+                                        style={({ isActive }) =>
+                                            isActive ? { backgroundColor: '#333' } : undefined
+                                        }
+                                        to='/dashboard/addAProducts'>Add A Product</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        className='active:bg-transparent'
+                                        style={({ isActive }) =>
+                                            isActive ? { backgroundColor: '#333' } : undefined
+                                        }
+                                        to='/dashboard/myProducts'>My Products</NavLink>
+                                </li>
                             </>
                             :
                             ''
@@ -33,15 +47,43 @@ const DashboardLayout = () => {
                         {
                             isAdmin ?
                                 <>
-                                    <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
-                                    <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                                    <li><Link to='/dashboard/reportedItems'>Reported Items</Link></li>
+                                    <li>
+                                        <NavLink
+                                            className='active:bg-transparent'
+                                            style={({ isActive }) =>
+                                                isActive ? { backgroundColor: '#333' } : undefined
+                                            }
+                                            to='/dashboard/allSellers'>All Sellers</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className='active:bg-transparent'
+                                            style={({ isActive }) =>
+                                                isActive ? { backgroundColor: '#333' } : undefined
+                                            }
+                                            to='/dashboard/allBuyers'>All Buyers</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            className='active:bg-transparent'
+                                            style={({ isActive }) =>
+                                                isActive ? { backgroundColor: '#333' } : undefined
+                                            }
+                                            to='/dashboard/reportedItems'>Reported Items</NavLink>
+                                    </li>
                                 </>
                                 :
                                 ''
                         }
                         {
-                            !isAdmin && !isSeller && <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
+                            !isAdmin && !isSeller && <li>
+                                <NavLink
+                                    className='active:bg-transparent'
+                                    style={({ isActive }) =>
+                                        isActive ? { backgroundColor: '#333' } : undefined
+                                    }
+                                    to='/dashboard/myOrders'>My Orders</NavLink>
+                            </li>
                         }
                     </ul>
 

@@ -47,7 +47,7 @@ const ReportedItems = () => {
         <>
             <h2 className='text-2xl font-medium my-3'>Total Reported Items: {reportedItems.length}</h2>
             <div className="overflow-x-auto">
-                <table className="table w-[600px]">
+                <table className="table w-[800px]">
                     <thead>
                         <tr>
                             <th></th>
