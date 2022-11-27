@@ -14,6 +14,9 @@ import AllSellers from "../Dashboard/AllSellers/AllSellers";
 import Blogs from "../Pages/Blogs/Blogs";
 import Payment from "../Pages/Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
+import ReportedItems from "../Dashboard/ReportedItems/ReportedItems";
 
 export const router = createBrowserRouter([
     {
@@ -54,19 +57,23 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addAProducts',
-                element: <AddAProducts />
+                element: <SellerRoute><AddAProducts /></SellerRoute>
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts />
+                element: <SellerRoute><MyProducts /></SellerRoute>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers />
+                element: <AdminRoute><AllSellers /></AdminRoute>
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers />
+                element: <AdminRoute><AllBuyers /></AdminRoute>
+            },
+            {
+                path: '/dashboard/reportedItems',
+                element: <AdminRoute><ReportedItems /></AdminRoute>
             },
             {
                 path: '/dashboard/payment/:id',

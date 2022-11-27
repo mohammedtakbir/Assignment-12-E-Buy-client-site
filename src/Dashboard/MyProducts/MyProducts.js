@@ -14,7 +14,11 @@ const MyProducts = () => {
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`http://localhost:5000/products?email=${user?.email}`)
+        queryFn: () => fetch(`http://localhost:5000/products?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
     })
     if (isLoading) {
@@ -28,6 +32,9 @@ const MyProducts = () => {
     const handleDeleteProduct = (product) => {
         fetch(`http://localhost:5000/products/${product._id}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

@@ -9,7 +9,11 @@ const AllSellers = () => {
     const [deletingSeller, setDeletingSeller] = useState(null);
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
-        queryFn: () => fetch(`http://localhost:5000/users/sellers?user=${'seller'}`)
+        queryFn: () => fetch(`http://localhost:5000/users/sellers?user=${'seller'}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
     })
 
@@ -24,13 +28,15 @@ const AllSellers = () => {
     const handleDeleteSeller = (seller) => {
         fetch(`http://localhost:5000/users/sellers/${seller._id}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount) {
                     refetch();
                     toast.success(`${seller.name} is deleted successfully.`)
-                    console.log(data);
                     setDeletingSeller(null);
                 }
             })

@@ -13,13 +13,17 @@ const Payment = () => {
 
     const { data: order = {}, isLoading } = useQuery({
         queryKey: ['order', orderId],
-        queryFn: () => fetch(`http://localhost:5000/payment/${orderId.id}`)
+        queryFn: () => fetch(`http://localhost:5000/payment/${orderId.id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
             .then(res => res.json())
     })
     if (isLoading) {
         return <Loading />
     }
-    
+
     return (
         <div className='border shadow-lg max-w-sm p-4 rounded-md'>
             <div className='mb-3'>

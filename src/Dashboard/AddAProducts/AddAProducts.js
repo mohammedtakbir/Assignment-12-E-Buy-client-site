@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -12,12 +11,7 @@ const AddAProducts = () => {
     const { user } = useContext(AuthContext);
     const [isVerified, setIsVerified] = useState(false);
 
-    /* const { data: isVerified = [] } = useQuery({
-        queryKey: ['users', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/users/verify?email=${user?.email}`)
-            .then(res => res.json())
-    }) */
-
+    //* loading whether the user is verified or not using Axios!
     axios.get(`http://localhost:5000/users/verify?email=${user?.email}`)
         .then(function (response) {
             setIsVerified(response.data.isVerified);
@@ -82,11 +76,17 @@ const AddAProducts = () => {
                 fetch(`http://localhost:5000/products?email=${user?.email}`, {
                     method: 'POST',
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
                     },
                     body: JSON.stringify(product)
                 })
-                    .then(res => res.json())
+                    .then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            setLoading(false);
+                        }
+                        return res.json()
+                    })
                     .then(data => {
                         if (data.acknowledged) {
                             // form.reset();
