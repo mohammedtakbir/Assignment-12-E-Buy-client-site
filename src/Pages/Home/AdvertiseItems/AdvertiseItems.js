@@ -17,7 +17,6 @@ const AdvertiseItems = () => {
     if (isLoading) {
         return <Loading />
     }
-    console.log(advertiseItems)
 
     return (
         <>

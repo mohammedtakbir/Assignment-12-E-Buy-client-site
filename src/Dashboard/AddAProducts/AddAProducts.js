@@ -5,16 +5,30 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import axios from 'axios';
 
 const AddAProducts = () => {
     const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
+    const [isVerified, setIsVerified] = useState(false);
 
-    const { data: isVerified = [] } = useQuery({
+    /* const { data: isVerified = [] } = useQuery({
         queryKey: ['users', user?.email],
         queryFn: () => fetch(`http://localhost:5000/users/verify?email=${user?.email}`)
             .then(res => res.json())
-    })
+    }) */
+
+    axios.get(`http://localhost:5000/users/verify?email=${user?.email}`)
+        .then(function (response) {
+            setIsVerified(response.data.isVerified);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+
+        });
+
 
     const navigate = useNavigate();
     const handleAddProduct = (e) => {
@@ -61,7 +75,7 @@ const AddAProducts = () => {
                     mobile_number,
                     description,
                     sellerEmail: user?.email,
-                    seller_verify: isVerified.isVerified,
+                    seller_verify: isVerified,
                     status: 'available'
                 };
 

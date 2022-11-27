@@ -10,7 +10,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
-    const [isAdvertise, setIsAdvertise] = useState(false);
+    // const [isAdvertise, setIsAdvertise] = useState(false);
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
@@ -34,7 +34,6 @@ const MyProducts = () => {
                 if (data.deletedCount) {
                     refetch();
                     toast.success(`${product.model_name} is deleted successfully.`)
-                    console.log(data);
                     setDeletingProduct(null);
                 }
             })
@@ -53,7 +52,7 @@ const MyProducts = () => {
             .then(data => {
                 if (data.acknowledged) {
                     toast.success(`This product is Advertised`);
-                    setIsAdvertise(true);
+                    // setIsAdvertise(true);
                 }
             })
     }
@@ -92,8 +91,8 @@ const MyProducts = () => {
                                     <td>
                                         <button
                                             onClick={() => handleAdvertiseItem(product)}
-                                            disabled={(product.status === 'sold' || isAdvertise === true) && true}
-                                            className='btn btn-sm'>{isAdvertise ? 'Advertised' : 'Advertise'}</button>
+                                            disabled={(product.status === 'sold') && true}
+                                            className='btn btn-sm'>{'Advertise'}</button>
                                     </td>
                                     <td>
                                         <label

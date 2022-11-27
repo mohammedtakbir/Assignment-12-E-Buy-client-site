@@ -26,9 +26,10 @@ const Signup = () => {
         if (data.accountType === 'seller') {
             createUser(data.email, data.password)
                 .then(res => {
-                    saveSellerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
+                    saveSellerInfo(data.name, data.email, data.accountType.toLowerCase());
                     setSignupError('');
+                    console.log(res.user);
                 })
                 .catch(err => {
                     setLoading(false);
@@ -38,9 +39,10 @@ const Signup = () => {
         } else {
             createUser(data.email, data.password)
                 .then(res => {
-                    saveBuyerInfo(data.name, data.email, data.accountType.toLowerCase());
                     handleUpdateUserProfile(data.name);
+                    saveBuyerInfo(data.name, data.email, data.accountType.toLowerCase());
                     setSignupError('');
+                    console.log(res.user);
                 })
                 .catch(err => {
                     setLoading(false);
@@ -90,7 +92,7 @@ const Signup = () => {
             })
             .catch(err => {
                 setGoogleLoading(false);
-                console.error(err)
+                console.log(err)
             })
     }
 
