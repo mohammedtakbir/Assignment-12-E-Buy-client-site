@@ -17,6 +17,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import ReportedItems from "../Dashboard/ReportedItems/ReportedItems";
+import Dashboard from "../Dashboard/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard />
+            },
             {
                 path: '/dashboard/myOrders',
                 element: <MyOrders />
