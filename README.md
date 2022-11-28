@@ -1,11 +1,17 @@
 # Project Name: E-Buy-Web-Page
 
+## Admin Profile
+
+### adminEmail: mohammer@takbir.com
+### adminPassword: 12365478p
+
 ## Live Link
 Hosted in Firebase -> [E-Buy.com]()
 
 ## Overall Features
 * Single page application.
 * E-Commerce web platform.
+* Selling used Smartphones. 
 * For payment system we use Stripe.
 * We use Firebase for secure User Authentication.
 * We use MongoDB for Database.
