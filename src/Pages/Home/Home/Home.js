@@ -2,7 +2,7 @@ import React from 'react';
 import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import Banner from '../Banner/Banner';
 import ProductCategories from '../ProductCategories/ProductCategories';
-import QualityGoods from '../QualityFeatures/QualityFeatures';
+import QualityFeatures from '../QualityFeatures/QualityFeatures';
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
             <Banner />
             <AdvertiseItems />
             <ProductCategories />
-            <QualityGoods />
+            <QualityFeatures />
         </>
     );
 };

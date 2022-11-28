@@ -11,7 +11,7 @@ const ProductCategory = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products', name],
-        queryFn: () => fetch(`http://localhost:5000/products/${name.name}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/products/${name.name}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -27,7 +27,8 @@ const ProductCategory = () => {
     return (
         <>
             <div className='container mx-auto'>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 py-20'>
+                <p className='text-center sm:text-3xl text-2xl sm:my-12 my-8 font-medium'>Hurry up to buy!</p>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:gap-8 gap-0 gap-y-8 pb-20'>
                     {
                         products.map((product) => <ProductCard
                             key={product._id}

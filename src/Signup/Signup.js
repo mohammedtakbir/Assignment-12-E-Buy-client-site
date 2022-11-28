@@ -55,7 +55,7 @@ const Signup = () => {
     //* store seller info
     const saveSellerInfo = (name, email, accountType) => {
         const user = { email, name, role: accountType };
-        fetch('http://localhost:5000/users', {
+        fetch('https://e-buy-phi.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -99,7 +99,7 @@ const Signup = () => {
     //* store buyer info
     const saveBuyerInfo = (name, email, accountType) => {
         const user = { email, name, role: accountType };
-        fetch('http://localhost:5000/users', {
+        fetch('https://e-buy-phi.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -121,13 +121,14 @@ const Signup = () => {
     };
 
     return (
-        <section className='py-[100px] flex justify-center'>
-            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7">
+        <section className='lg:py-[100px] md:py-[70px] py-[50px] flex justify-center'>
+            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7 sm:mx-0 mx-3">
                 <form className="space-y-6" onSubmit={handleSubmit(handleSignUp)}>
-                    <h5 className="text-xl font-medium text-gray-900 text-center">Sign Up</h5>
+                    <h5 className="text-xl font-medium text-gray-900 text-center">Create an account</h5>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900">Name</label>
                         <input
+                            placeholder='Insert Your Full Name'
                             {...register('name',
                                 { required: 'Name is Required' }
                             )}
@@ -137,8 +138,9 @@ const Signup = () => {
                         {errors.name && <p role='alert' className='text-red-500 text-sm'>{errors.name?.message}</p>}
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900">email</label>
                         <input
+                            placeholder='Insert Your Email'
                             {...register('email',
                                 { required: 'Email is Required' }
                             )}
@@ -149,8 +151,9 @@ const Signup = () => {
                         {signUpError && <p className='text-red-500 !mt-0 text-sm'>{signUpError}</p>}
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900">password</label>
                         <input
+                            placeholder='Insert Your Password'
                             {...register('password',
                                 {
                                     required: 'Password is Required',
@@ -172,7 +175,9 @@ const Signup = () => {
                         Already have an account? <Link to="/login" className="text-blue-500 hover:underline">Login</Link>
                     </div>
                 </form>
-                <div className="divider">OR</div>
+                <div>
+                    <p className='text-center my-3 font-semibold text-sm'>OR</p>
+                </div>
                 <div className='text-center'>
                     <button onClick={handleGoogleSignUp} type="button" className="border border-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 hover:bg-gray-700 hover:text-white">
                         <svg
@@ -186,7 +191,7 @@ const Signup = () => {
                             viewBox="0 0 488 512"><path
                                 fill="currentColor"
                                 d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                        {googleLoading ? 'LOADING...' : 'CONTINUE WITH GOOGLE'}
+                        {googleLoading ? 'LOADING...' : 'SIGN UP WITH GOOGLE'}
                     </button>
                 </div>
             </div>

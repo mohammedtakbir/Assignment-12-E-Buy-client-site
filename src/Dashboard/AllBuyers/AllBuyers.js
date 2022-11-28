@@ -9,7 +9,7 @@ const AllBuyers = () => {
     const [deletingBuyer, setDeletingBuyer] = useState(null);
     const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers'],
-        queryFn: () => fetch(`http://localhost:5000/users/buyers?user=${'buyer'}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/users/buyers?user=${'buyer'}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -26,7 +26,7 @@ const AllBuyers = () => {
     };
 
     const handleDeleteBuyer = (buyer) => {
-        fetch(`http://localhost:5000/users/sellers/${buyer._id}`, {
+        fetch(`https://e-buy-phi.vercel.app/users/sellers/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -44,9 +44,9 @@ const AllBuyers = () => {
 
     return (
         <>
-            <h2 className='text-2xl font-semibold my-4'>All Buyers</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>All Buyers</h2>
             <div className="overflow-x-auto">
-                <table className="table w-[1000px]">
+                <table className="table w-[900px]">
                     <thead>
                         <tr>
                             <th></th>

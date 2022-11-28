@@ -6,7 +6,7 @@ const AdvertiseItem = ({ advertiseItem, setSelectedProduct }) => {
     
 
     return (
-        <div className='hover:shadow-xl duration-300 shadow-md cursor-pointer rounded-md text-center p-5'>
+        <div className='hover:shadow-xl duration-300 border border-gray-100 shadow-md cursor-pointer rounded-md text-center p-5 md:mx-0 mx-3'>
             <img src={image} className='w-[200px] h-[200px] mx-auto rounded-md' alt="" />
             <h2 className='font-medium mt-3 mb-2'>{model_name}</h2>
             <p className='text-blue-500 font-medium mb-1'>${resale_price}</p>

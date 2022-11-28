@@ -7,7 +7,7 @@ export const useSeller = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/sellers/${email}`)
+            fetch(`https://e-buy-phi.vercel.app/users/sellers/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setIsSeller(data.isSeller);

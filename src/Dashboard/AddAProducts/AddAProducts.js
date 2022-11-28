@@ -12,7 +12,7 @@ const AddAProducts = () => {
     const [isVerified, setIsVerified] = useState(false);
 
     //* loading whether the user is verified or not using Axios!
-    axios.get(`http://localhost:5000/users/verify?email=${user?.email}`)
+    axios.get(`https://e-buy-phi.vercel.app/users/verify?email=${user?.email}`)
         .then(function (response) {
             setIsVerified(response.data.isVerified);
         })
@@ -73,7 +73,7 @@ const AddAProducts = () => {
                     status: 'available'
                 };
 
-                fetch(`http://localhost:5000/products?email=${user?.email}`, {
+                fetch(`https://e-buy-phi.vercel.app/products?email=${user?.email}`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -102,8 +102,8 @@ const AddAProducts = () => {
 
     };
     return (
-        <div className='max-w-5xl py-5 mx-2'>
-            <h2 className='text-3xl text-center font-sm sm:my-5 my-3 mb-9'>Add A New Product</h2>
+        <div className='max-w-5xl py-5 mx-3'>
+            <h2 className='sm:text-3xl text-2xl text-center sm:pt-5 pt-3 sm:pb-12 pb-10'>Add A New Product</h2>
             <form onSubmit={handleAddProduct}>
                 <div className='grid md:grid-cols-2 md:gap-6'>
                     <div className="relative z-0 mb-6 w-full group">

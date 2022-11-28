@@ -13,11 +13,11 @@ const CheckoutForm = ({ order }) => {
     const [loading, setLoading] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [success, setSuccess] = useState('');
-    const { price, ProductName, email, _id, productId } = order;
+    const { price, ProductName, email, _id, productId, buyerName, phone } = order;
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://e-buy-phi.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -68,14 +68,17 @@ const CheckoutForm = ({ order }) => {
         }
         if (paymentIntent.status === 'succeeded') {
             const payment = {
-                price,
                 email,
+                price,
+                phone,
+                buyerName,
+                ProductName,
                 orderId: _id,
                 transactionId: paymentIntent.id
             }
 
             //* store payment info in the database
-            fetch(`http://localhost:5000/payments/${productId}`, {
+            fetch(`https://e-buy-phi.vercel.app/payments/${productId}`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

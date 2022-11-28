@@ -10,7 +10,7 @@ const Orders = () => {
 
     const { data: orders = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/bookings?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -28,7 +28,7 @@ const Orders = () => {
 
     return (
         <div>
-            <h2 className='text-2xl font-semibold my-5'>My Orders</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>My Orders</h2>
             <div className="overflow-x-auto">
                 <table className="table w-[800px]">
                     <thead>

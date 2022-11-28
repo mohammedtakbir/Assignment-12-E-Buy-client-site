@@ -9,7 +9,7 @@ const ReportedItems = () => {
     const [deleteReportedItem, setDeleteReportedItem] = useState(null);
     const { data: reportedItems = [], isLoading, refetch } = useQuery({
         queryKey: [''],
-        queryFn: () => fetch(`http://localhost:5000/reportedItems`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/reportedItems`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -22,7 +22,7 @@ const ReportedItems = () => {
     }
 
     const handleDeleteReportedItem = (item) => {
-        fetch(`http://localhost:5000/reportedItems/${item._id}`, {
+        fetch(`https://e-buy-phi.vercel.app/reportedItems/${item._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const ReportedItems = () => {
 
     return (
         <>
-            <h2 className='text-2xl font-medium my-3'>Total Reported Items: {reportedItems.length}</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>Reported Items</h2>
             <div className="overflow-x-auto">
                 <table className="table w-[800px]">
                     <thead>

@@ -14,13 +14,12 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
-
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail)
 
     if (token) {
         navigate(from, { replace: true });
-    }
+    };
 
     const handleLogin = (data) => {
         setLoading(true);
@@ -54,7 +53,7 @@ const Login = () => {
     //* store buyer info
     const saveBuyerInfo = (name, email, accountType) => {
         const user = { email, name, role: accountType };
-        fetch('http://localhost:5000/users', {
+        fetch('https://e-buy-phi.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -85,13 +84,14 @@ const Login = () => {
     };
 
     return (
-        <section className='py-[100px] flex justify-center'>
-            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7 sm:mx-0 mx-2">
+        <section className='lg:py-[100px] md:py-[70px] py-[50px] flex justify-center'>
+            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7 sm:mx-0 mx-3">
                 <form className="space-y-6" onSubmit={handleSubmit(handleLogin)}>
-                    <h5 className="text-xl font-medium text-gray-900 text-center">Log in</h5>
+                    <h5 className="text-xl font-medium text-gray-900 text-center">Hello</h5>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900">Email</label>
                         <input
+                            placeholder='Insert Your Email'
                             {...register("email", { required: "Email Address is required" })}
                             type="email"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -99,10 +99,9 @@ const Login = () => {
                         {errors.email && <p role="alert" className='text-red-500 text-sm'>{errors.email?.message}</p>}
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900"
-                        >
-                            Your password</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900">Password</label>
                         <input
+                            placeholder='Insert Your Password'
                             {...register("password", { required: "Password is required" })}
                             type="password"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -120,10 +119,12 @@ const Login = () => {
                         type="submit"
                         className="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{loading ? 'Loading...' : 'Login'}</button>
                     <div className="text-sm text-gray-500 !mt-3 text-center">
-                        New to E-Bay? <Link to="/signup" className="text-blue-500 hover:underline">Create new account</Link>
+                        Don't have an account? <Link to="/signup" className="text-blue-500 hover:underline">Create new account</Link>
                     </div>
                 </form>
-                <div className="divider">OR</div>
+                <div>
+                    <p className='text-center my-3 font-semibold text-sm'>OR</p>
+                </div>
                 <div className='text-center'>
                     <button onClick={handleGoogleLogIn} type="button" className="border border-gray-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 hover:bg-gray-700 hover:text-white">
                         <svg
@@ -137,7 +138,7 @@ const Login = () => {
                             viewBox="0 0 488 512"><path
                                 fill="currentColor"
                                 d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                        {googleLoading ? 'LOADING...' : 'CONTINUE WITH GOOGLE'}
+                        {googleLoading ? 'LOADING...' : 'LOGIN IN WITH GOOGLE'}
                     </button>
                 </div>
             </div>

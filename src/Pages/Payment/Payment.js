@@ -13,7 +13,7 @@ const Payment = () => {
 
     const { data: order = {}, isLoading } = useQuery({
         queryKey: ['order', orderId],
-        queryFn: () => fetch(`http://localhost:5000/payment/${orderId.id}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/payment/${orderId.id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },

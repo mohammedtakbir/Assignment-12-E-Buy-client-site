@@ -22,12 +22,12 @@ const QualityFeatures = () => {
     ]
 
     return (
-        <div className='container mx-auto py-[60px]'>
-            <div className='text-center'>
+        <div className='container mx-auto sm:pb-[60px] pb-[40px] lg:pt-[40px] pt-0'>
+            <div className='text-center md:mx-0 mx-3'>
                 <p className='text-blue-500 text-sm'>There are some redeeming factors</p>
-                <h3 className='text-3xl mt-4 mb-5'>We Provide High Quality Goods</h3>
+                <h3 className='sm:text-3xl text-2xl mt-4 mb-5'>We Provide High Quality Goods</h3>
                 <p className='text-gray-500 text-sm'>A client that's unhappy for a reason is a problem, a client that's unhappy though he or her can't</p>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-14'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:gap-10 gap-8 sm:mt-14 mt-10'>
                     {
                         features.map((feature, i) => <Feature
                             key={i}

@@ -21,7 +21,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
         year_of_use } = product;
 
     const handleReportItem = (product) => {
-        fetch('http://localhost:5000/reportedItems', {
+        fetch('https://e-buy-phi.vercel.app/reportedItems', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -39,33 +39,32 @@ const ProductCard = ({ product, setSelectedProduct }) => {
 
     return (
         <>
-            <div className="bg-white border border-gray-200 rounded-lg shadow-md h-full p-5">
+            <div className="bg-white border border-gray-200 rounded-lg shadow-md h-full p-5 xl:mx-0 mx-3">
                 <Link href="#">
                     <img className="rounded-t-lg w-[250px] mx-auto" src={image} alt="" />
                 </Link>
                 <div className="p-1 mt-5">
-                    <p className='text-xl font-semibold mb-4'>{model_name}</p>
-                    <div className='lg:flex justify-between mb-2'>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Brand Name: {brand}</p>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Seller: {seller_name} {seller_verify ? <HiCheckCircle className='text-blue-500 text-lg inline' /> : ''}</p>
+                    <p className='text-xl font-semibold xl:mb-3 mb-2'>{model_name}</p>
+                    <div className='xl:flex justify-between xl:mb-2'>
+                        <p className='text-sm text-gray-500 xl:w-1/2 capitalize xl:mb-0 mb-1'>Brand: {brand}</p>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Condition: {condition}</p>
                     </div>
-                    <div className='lg:flex  justify-between mb-2'>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Condition: {condition}</p>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Purchase Year: {purchase_year}</p>
+                    <div className='xl:flex  justify-between xl:mb-2'>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Original Price: ${original_price}</p>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Resale Price: ${resale_price}</p>
                     </div>
-                    <div className='lg:flex  justify-between mb-2'>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Original Price: ${original_price}</p>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Resale Price: ${resale_price}</p>
+                    <div className='xl:flex  justify-between mb-2 xl:mb-4'>
+                        <p className='text-sm text-gray-500 xl:mb-0 mb-1'>Year of use: {year_of_use}</p>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Purchase Year: {purchase_year}</p>
                     </div>
-                    <div className='lg:flex  justify-between mb-4 w-1/2'>
-                        <p className='text-sm text-gray-500'>Year of use: {year_of_use}</p>
+                    
+                    <div className='xl:flex  justify-between'>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Seller: {seller_name} {seller_verify && <HiCheckCircle className='text-blue-500 text-lg inline' />}</p>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Mobile: {mobile_number}</p>
                     </div>
-                    <div className='lg:flex  justify-between mb-2'>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Location: {location}</p>
-                        <p className='text-sm text-gray-500 lg:w-1/2'>Mobile: {mobile_number}</p>
-                    </div>
+                    <p className='text-sm text-gray-500 xl:mb-0 mb-1'>Location: {location}</p>
                     <p className='text-sm text-gray-500'>Posted on: {post_time}</p>
-                    <p className='text-sm text-gray-500 mt-5'>{description}</p>
+                    <p className='text-sm text-gray-500 mt-3'>{description}</p>
                     <div className='flex justify-between items-center mt-7'>
                         <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blgrayue-300">
                             Book Now

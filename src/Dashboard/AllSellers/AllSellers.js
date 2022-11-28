@@ -4,12 +4,13 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import Loading from '../../components/Loading';
+import { HiCheckCircle } from "react-icons/hi";
 
 const AllSellers = () => {
     const [deletingSeller, setDeletingSeller] = useState(null);
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
-        queryFn: () => fetch(`http://localhost:5000/users/sellers?user=${'seller'}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/users/sellers?user=${'seller'}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -26,7 +27,7 @@ const AllSellers = () => {
     };
 
     const handleDeleteSeller = (seller) => {
-        fetch(`http://localhost:5000/users/sellers/${seller._id}`, {
+        fetch(`https://e-buy-phi.vercel.app/users/sellers/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +44,7 @@ const AllSellers = () => {
     };
 
     const handleVerified = (email, id) => {
-        fetch(`http://localhost:5000/products/?email=${email}&id=${id}`, {
+        fetch(`https://e-buy-phi.vercel.app/products/?email=${email}&id=${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -60,7 +61,7 @@ const AllSellers = () => {
 
     return (
         <>
-            <h2 className='text-2xl font-semibold my-4'>All Sellers</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>All Sellers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-[1000px]">
                     <thead>
@@ -76,14 +77,23 @@ const AllSellers = () => {
                         {sellers.map((seller, i) => (
                             <tr key={seller._id}>
                                 <th>{i + 1}</th>
-                                <td>{seller.name}</td>
+                                <td>{seller.name} {seller.seller_verify && <HiCheckCircle className='text-blue-500 text-lg inline' />}</td>
                                 <td>{seller.email}</td>
                                 <td>
-                                    {!seller.seller_verify &&
-                                        <button onClick={() => handleVerified(seller.email, seller._id)} className='btn btn-sm'>Verified</button>}
+                                    <button
+                                        disabled={seller.seller_verify && true}
+                                        onClick={() => handleVerified(seller.email, seller._id)}
+                                        className='btn btn-sm'>
+                                        Verified
+                                    </button>
                                 </td>
                                 <td>
-                                    <label onClick={() => setDeletingSeller(seller)} htmlFor="delete-modal" className="btn btn-sm bg-red-500 border-red-500 hover:border-red-500 hover:bg-red-500">Delete</label>
+                                    <label
+                                        onClick={() => setDeletingSeller(seller)}
+                                        htmlFor="delete-modal"
+                                        className="btn btn-sm bg-red-500 border-red-500 hover:border-red-500 hover:bg-red-500">
+                                        Delete
+                                    </label>
                                 </td>
                             </tr>
                         ))}

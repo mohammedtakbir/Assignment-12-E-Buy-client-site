@@ -14,7 +14,7 @@ const MyProducts = () => {
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`http://localhost:5000/products?email=${user?.email}`, {
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/products?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -30,7 +30,7 @@ const MyProducts = () => {
     }
 
     const handleDeleteProduct = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://e-buy-phi.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -47,7 +47,7 @@ const MyProducts = () => {
     };
 
     const handleAdvertiseItem = (product) => {
-        fetch('http://localhost:5000/advertise', {
+        fetch('https://e-buy-phi.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -66,7 +66,7 @@ const MyProducts = () => {
 
     return (
         <>
-            <h2 className='text-2xl font-semibold my-5'>My Products</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>My Products</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
