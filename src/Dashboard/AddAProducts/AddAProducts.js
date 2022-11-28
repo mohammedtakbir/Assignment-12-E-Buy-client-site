@@ -23,7 +23,6 @@ const AddAProducts = () => {
 
         });
 
-
     const navigate = useNavigate();
     const handleAddProduct = (e) => {
         setLoading(true);
@@ -89,7 +88,7 @@ const AddAProducts = () => {
                     })
                     .then(data => {
                         if (data.acknowledged) {
-                            // form.reset();
+                            form.reset();
                             setLoading(false);
                             navigate('/dashboard/myProducts');
                             toast.success('Successfully added a Product!')

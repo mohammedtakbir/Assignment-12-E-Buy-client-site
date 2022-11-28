@@ -29,7 +29,6 @@ const Signup = () => {
                     handleUpdateUserProfile(data.name);
                     saveSellerInfo(data.name, data.email, data.accountType.toLowerCase());
                     setSignupError('');
-                    console.log(res.user);
                 })
                 .catch(err => {
                     setLoading(false);
@@ -42,7 +41,6 @@ const Signup = () => {
                     handleUpdateUserProfile(data.name);
                     saveBuyerInfo(data.name, data.email, data.accountType.toLowerCase());
                     setSignupError('');
-                    console.log(res.user);
                 })
                 .catch(err => {
                     setLoading(false);
@@ -112,7 +110,6 @@ const Signup = () => {
                 setLoading(false);
                 setCreatedUserEmail(email);
                 toast.success('Sign Up Successfully!');
-                console.log(data)
             })
             .catch(err => {
                 setGoogleLoading(false);

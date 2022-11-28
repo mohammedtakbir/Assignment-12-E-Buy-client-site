@@ -34,7 +34,6 @@ const ReportedItems = () => {
                     refetch();
                     setDeleteReportedItem(null);
                     toast.success('Deleted Reported Item')
-                    console.log(data);
                 }
             })
     };
