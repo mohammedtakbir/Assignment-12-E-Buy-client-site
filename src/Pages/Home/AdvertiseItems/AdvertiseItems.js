@@ -26,7 +26,7 @@ const AdvertiseItems = () => {
     return (
         <>
             {advertiseItems.length > 0 &&
-                <div className='container mx-auto pt-16 sm:pb-8 pb-5'>
+                <div className='container mx-auto sm:pt-16 pt-10 sm:pb-8 pb-5'>
                     <div className='text-center md:mx-0 mx-3'>
                         <p className='text-sm text-blue-500'>Discount Offer!</p>
                         <h2 className='text-3xl mt-4 sm:mb-5 mb-4'>Get Discount On These Products!!!</h2>
