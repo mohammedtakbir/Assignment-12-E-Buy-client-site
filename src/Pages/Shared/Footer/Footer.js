@@ -10,13 +10,14 @@ const Footer = () => {
                         <div className="w-full -mx-6 lg:w-2/5">
                             <div className="px-6">
                                 <div>
-                                    <Link href="#" className="text-xl font-bold text-gray-800 hover:text-gray-700">E-Buy</Link>
+                                    <Link to='/' className="text-xl font-bold text-gray-800 hover:text-gray-700">E-Buy</Link>
                                 </div>
 
-                                <p className="max-w-sm mt-2 text-gray-500">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
+                                <p className="max-w-sm mt-2 text-gray-500">To get best value for money shop form our website.</p>
+                                <p className="max-w-sm mt-2 text-gray-500 text-sm">Join with us:</p>
 
-                                <div className="flex mt-6 -mx-2">
-                                    <Link href="#"
+                                <div className="flex mt-0 -mx-2">
+                                    <Link to='/'
                                         className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Reddit">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +27,7 @@ const Footer = () => {
                                         </svg>
                                     </Link>
 
-                                    <Link href="#"
+                                    <Link to='/'
                                         className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Facebook">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +37,7 @@ const Footer = () => {
                                         </svg>
                                     </Link>
 
-                                    <Link href="#"
+                                    <Link to='/'
                                         className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Github">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,29 +54,30 @@ const Footer = () => {
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 <div>
                                     <h3 className="text-gray-700 uppercase">About</h3>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Company</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">community</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Careers</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Privacy & Policy</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Shipping</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">FAQs</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">About us</Link>
                                 </div>
 
                                 <div>
                                     <h3 className="text-gray-700 uppercase">Blog</h3>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Tec</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Music</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Videos</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Upcoming Phones</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Semiconductor</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Tech</Link>
                                 </div>
 
                                 <div>
                                     <h3 className="text-gray-700 uppercase">Products</h3>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Mega cloud</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Aperion UI</Link>
-                                    <Link href="#" className="block mt-2 text-sm text-gray-600 hover:underline">Meraki UI</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Popular Product</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">New Arrival Product</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Most sell Product</Link>
                                 </div>
 
                                 <div>
                                     <h3 className="text-gray-700 uppercase">Contact</h3>
-                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">+1 526 654 8965</span>
-                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">example@email.com</span>
+                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">+8801836314043</span>
+                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">takbir@email.com</span>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +86,7 @@ const Footer = () => {
                     <hr className="h-px my-6 bg-gray-200 border-none" />
 
                         <div>
-                            <p className="text-center text-gray-500">© <strong>E-Buy</strong> 2022 - All rights reserved</p>
+                            <p className="text-center text-gray-500">© <strong><Link to='/'>E-Buy</Link></strong> 2022 - All rights reserved</p>
                         </div>
                 </div>
             </footer>

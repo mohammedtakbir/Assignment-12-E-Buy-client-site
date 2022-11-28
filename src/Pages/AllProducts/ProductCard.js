@@ -66,8 +66,6 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                     </div>
                     <p className='text-sm text-gray-500'>Posted on: {post_time}</p>
                     <p className='text-sm text-gray-500 mt-5'>{description}</p>
-
-                    {/* <button onClick={() => handleReportItem(product)} className='py-1 px-2 rounded-md bg-black text-sm text-white'>Report this item</button> */}
                     <div className='flex justify-between items-center mt-7'>
                         <label onClick={() => setSelectedProduct(product)} htmlFor="booking-modal" className="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blgrayue-300">
                             Book Now

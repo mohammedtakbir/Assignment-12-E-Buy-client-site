@@ -41,7 +41,8 @@ const ProductCategory = () => {
                 <BookingModal
                     closeModal={closeModal}
                     selectedProduct={selectedProduct}
-                />}
+                />
+            }
         </>
     );
 };

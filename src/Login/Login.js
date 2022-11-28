@@ -9,8 +9,8 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [googleLoading, setGoogleLoading] = useState(false);
     const [loginError, setLoginError] = useState('');
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const { userLogin, googleAuthentication } = useContext(AuthContext);
+    const { register, handleSubmit, formState: { errors }, getValues } = useForm();
+    const { userLogin, googleAuthentication, resetPassword } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -70,6 +70,20 @@ const Login = () => {
                 setGoogleLoading(false);
             })
     };
+
+    const handleForgotPassword = () => {
+        const getEmail = getValues();
+        if (getEmail.email === '') {
+            toast.error("You've to insert Email First.");
+            return;
+        }
+        resetPassword(getEmail.email)
+            .then(() => {
+                toast.success('Please check your email to reset your password.')
+            })
+            .catch(err => console.error(err))
+    };
+
     return (
         <section className='py-[100px] flex justify-center'>
             <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-7 sm:mx-0 mx-2">
@@ -95,7 +109,10 @@ const Login = () => {
                         />
                         {errors.password && <p role="alert" className='text-red-500 text-sm'>{errors.password?.message}</p>}
                     </div>
-                    <button type="button" className='text-blue-500 text-sm hover:underline !mt-0'>
+                    <button
+                        onClick={handleForgotPassword}
+                        type="button"
+                        className='text-blue-500 text-sm hover:underline !mt-0'>
                         Forgot Password
                     </button>
                     {loginError && <p className='text-red-500 !mt-0 text-sm'>{loginError}</p>}
