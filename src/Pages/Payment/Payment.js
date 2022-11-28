@@ -25,7 +25,7 @@ const Payment = () => {
     }
 
     return (
-        <div className='border shadow-lg max-w-sm p-4 rounded-md mt-10'>
+        <div className='border shadow-lg max-w-sm lg:mx-0 sm:mx-auto mx-3 p-4 rounded-md mt-[50px]'>
             <div className='mb-7'>
                 <img src={order.image} className='w-200px h-[200px]' alt="" />
                 <div className='mt-5'>

@@ -28,9 +28,9 @@ const AdvertiseItems = () => {
             {advertiseItems.length > 0 &&
                 <div className='container mx-auto pt-16 sm:pb-8 pb-5'>
                     <div className='text-center md:mx-0 mx-3'>
-                        <p className='text-sm text-blue-500'>Learn how to get a discount</p>
-                        <h2 className='text-3xl mt-4 sm:mb-5 mb-4'>Most Popular Products</h2>
-                        <h2 className='text-gray-500 text-sm'>Proponents of content strategy may shun of dummy copy designers</h2>
+                        <p className='text-sm text-blue-500'>Discount Offer!</p>
+                        <h2 className='text-3xl mt-4 sm:mb-5 mb-4'>Get Discount On These Products!!!</h2>
+                        <h2 className='text-gray-500 text-sm'>Get 20% off your first purchase with E-Bay. Shop now to start saving!</h2>
                     </div>
                     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-7 sm:mt-14 mt-10'>
                         {
