@@ -13,6 +13,9 @@ export const useSeller = (email) => {
                     setIsSeller(data.isSeller);
                     setIsSellerLoading(false);
                 })
+                .catch(err => {
+                    setIsSellerLoading(false);
+                })
         }
     }, [email])
     return [isSeller, isSellerLoading];
