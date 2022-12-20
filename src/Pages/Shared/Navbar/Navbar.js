@@ -30,7 +30,7 @@ const Navbar = () => {
                     <Link to='/dashboard' className='active:bg-gray-200 text-black'>Dashboard</Link>
                 </li>
                 <li>
-                    <button onClick={handleSignOut}>Sign Out</button>
+                    <button onClick={handleSignOut} className='active:bg-gray-200 text-black'>Sign Out</button>
                 </li>
             </>
             :

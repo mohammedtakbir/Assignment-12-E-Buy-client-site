@@ -11,11 +11,7 @@ const ProductCategory = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { data: products = [], isLoading } = useQuery({
         queryKey: ['products', name],
-        queryFn: () => fetch(`https://e-buy-phi.vercel.app/products/${name.name}`, {
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/products/${name.name}`)
             .then(res => res.json())
     })
     if (isLoading) {

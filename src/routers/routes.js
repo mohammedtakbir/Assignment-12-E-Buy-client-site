@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:name',
-                element: <PrivateRoute><AllProducts /></PrivateRoute>
+                element: <AllProducts />
             },
             {
                 path: '/signup',
