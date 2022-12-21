@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import ReportedItems from "../Dashboard/ReportedItems/ReportedItems";
 import Dashboard from "../Dashboard/Dashboard/Dashboard";
+import BookingProduct from "../Pages/BookingProduct/BookingProduct";
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs />
+            },
+            {
+                path: '/booking-page/:id',
+                element: <PrivateRoute><BookingProduct /></PrivateRoute>
             },
         ]
     },
