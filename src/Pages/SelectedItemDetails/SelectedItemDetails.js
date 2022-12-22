@@ -1,14 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { HiCheckCircle } from "react-icons/hi";
-import toast from 'react-hot-toast';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { HiCheckCircle } from 'react-icons/hi';
+import { Link, useParams } from 'react-router-dom';
 
-const ProductCard = ({ product, setSelectedProduct }) => {
+const SelectedItemDetails = () => {
+    const id = useParams();
     const [reported, setReported] = useState('');
     const [isReported, setIsReported] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const { data: selectedItem = [], isLoading } = useQuery({
+        queryKey: ['selectedItem', id.id],
+        queryFn: () => fetch(`http://localhost:5000/selectedItem/${id.id}`)
+            .then(res => res.json())
+    })
 
     const { image,
         brand,
@@ -25,41 +31,41 @@ const ProductCard = ({ product, setSelectedProduct }) => {
         seller_verify,
         year_of_use,
         storage,
-        color } = product;
+        color } = selectedItem;
 
-    const handleReportItem = (product) => {
-        const reportedItem = { ...product, status: 'reported' };
-        fetch('https://e-buy-phi.vercel.app/reportedItems', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(reportedItem)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    setIsReported(!false)
-                    console.log(data)
-                    toast.success('Reported this item successfully');
-                }
+        const handleReportItem = (selectedItem) => {
+            const reportedItem = { ...selectedItem, status: 'reported' };
+            fetch('https://e-buy-phi.vercel.app/reportedItems', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(reportedItem)
             })
-    }
-
-    useEffect(() => {
-        setLoading(true);
-        fetch(`https://e-buy-phi.vercel.app/reportedItems/${product._id}`)
-            .then(res => res.json())
-            .then(data => {
-                setReported(data.reportedStatus)
-                setLoading(false)
-            })
-            .catch(err => setLoading(false));
-    }, [product._id, isReported])
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        setIsReported(!false)
+                        console.log(data)
+                        toast.success('Reported this item successfully');
+                    }
+                })
+        }
+    
+        useEffect(() => {
+            setLoading(true);
+            fetch(`https://e-buy-phi.vercel.app/reportedItems/${selectedItem._id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setReported(data.reportedStatus)
+                    setLoading(false)
+                })
+                .catch(err => setLoading(false));
+        }, [selectedItem._id, isReported])
 
     return (
-        <>
+        <div className='max-w-[500px] mx-auto py-16'>
             <div className="bg-white border border-gray-200 rounded-lg shadow-md h-full p-5 xl:mx-0 mx-3">
                 <Link href="#">
                     <img className="rounded-t-lg w-[250px] mx-auto" src={image} alt="" />
@@ -92,27 +98,27 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                     <p className='text-sm text-gray-500 mt-3'>{description}</p>
                     <div className='flex justify-between items-center mt-7'>
 
-                        <Link to={`/booking-page/${product._id}`}>
+                        <Link to={`/booking-page/${selectedItem._id}`}>
                             <button className='cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blgrayue-300'>
                                 Book Now
                                 <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                             </button>
                         </Link>
                         {
-                            loading ||
-                            <button
-                                disabled={reported && true}
-                                onClick={() => handleReportItem(product)}
-                                className={`btn btn-xs capitalize`}
-                            >
-                                {reported ? reported :
-                                    'Report this item'}
-                            </button>}
+                        loading ||
+                        <button
+                            disabled={reported && true}
+                            onClick={() => handleReportItem(selectedItem)}
+                            className={`btn btn-xs capitalize`}
+                        >
+                            {reported ? reported :
+                                'Report this item'}
+                        </button>}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default ProductCard;
+export default SelectedItemDetails;

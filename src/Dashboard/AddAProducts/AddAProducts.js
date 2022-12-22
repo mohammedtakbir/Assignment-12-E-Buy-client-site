@@ -40,6 +40,8 @@ const AddAProducts = () => {
         const condition = form.condition.value;
         const purchase_year = form.purchase_year.value;
         const mobile_number = form.mobile_number.value;
+        const color = form.color.value;
+        const storage = form.storage.value;
         const description = form.description.value;
 
         const image = form.image.files[0];
@@ -69,6 +71,8 @@ const AddAProducts = () => {
                     description,
                     sellerEmail: user?.email,
                     seller_verify: isVerified,
+                    color,
+                    storage,
                     status: 'available'
                 };
 
@@ -233,6 +237,28 @@ const AddAProducts = () => {
                             required
                         />
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Purchase Year</label>
+                    </div>
+                </div>
+                <div className="grid md:grid-cols-2 md:gap-6">
+                    <div className="relative z-0 mb-6 w-full group">
+                        <input
+                            type="text"
+                            name="storage"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" "
+                            required
+                        />
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Storage(128GB)</label>
+                    </div>
+                    <div className="relative z-0 mb-6 w-full group">
+                        <input
+                            type="text"
+                            name="color"
+                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" "
+                            required
+                        />
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">color</label>
                     </div>
                 </div>
                 <div className="relative z-0 mb-6 w-full group">

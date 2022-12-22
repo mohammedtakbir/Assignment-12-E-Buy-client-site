@@ -19,6 +19,8 @@ import SellerRoute from "./SellerRoute";
 import ReportedItems from "../Dashboard/ReportedItems/ReportedItems";
 import Dashboard from "../Dashboard/Dashboard/Dashboard";
 import BookingProduct from "../Pages/BookingProduct/BookingProduct";
+import SelectedItemDetails from "../Pages/SelectedItemDetails/SelectedItemDetails";
+import SelectedNewArrivalItem from "../Pages/SelectedNewArrivalItem/SelectedNewArrivalItem";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +51,14 @@ export const router = createBrowserRouter([
             {
                 path: '/booking-page/:id',
                 element: <PrivateRoute><BookingProduct /></PrivateRoute>
+            },
+            {
+                path: '/selected-items-details/:id',
+                element: <SelectedItemDetails />
+            },
+            {
+                path: '/selected-newArrival-items/:id',
+                element: <SelectedNewArrivalItem />
             },
         ]
     },
