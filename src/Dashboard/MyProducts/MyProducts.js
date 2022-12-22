@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -10,7 +10,41 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
-    // const [isAdvertise, setIsAdvertise] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [advertise, setAdvertise] = useState(false);
+
+    const handleAdvertiseItem = (product) => {
+
+        const advertisedProduct = { ...product, isAdvertise: true }
+        fetch('https://e-buy-phi.vercel.app/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(advertisedProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success(`This product is Advertised`);
+                    // setIsAdvertise(true);
+                }
+            })
+    }
+
+    //* work letter
+    /* useEffect(() => {
+        setLoading(true);
+        fetch(`https://e-buy-phi.vercel.app/advertise/`)
+            .then(res => res.json())
+            .then(data => {
+                setAdvertise(data.reportedStatus)
+                setLoading(false);
+            })
+            .catch(err => setLoading(false));
+    }, [])
+ */
 
     const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
@@ -21,6 +55,7 @@ const MyProducts = () => {
         })
             .then(res => res.json())
     })
+
     if (isLoading) {
         return <Loading />
     };
@@ -45,24 +80,6 @@ const MyProducts = () => {
                 }
             })
     };
-
-    const handleAdvertiseItem = (product) => {
-        fetch('https://e-buy-phi.vercel.app/advertise', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(product)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success(`This product is Advertised`);
-                    // setIsAdvertise(true);
-                }
-            })
-    }
 
     return (
         <>

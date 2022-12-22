@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { HiCheckCircle } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
+import Loading from '../../components/Loading';
 
 const SelectedItemDetails = () => {
     const id = useParams();
@@ -12,7 +13,7 @@ const SelectedItemDetails = () => {
 
     const { data: selectedItem = [], isLoading } = useQuery({
         queryKey: ['selectedItem', id.id],
-        queryFn: () => fetch(`http://localhost:5000/selectedItem/${id.id}`)
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/selectedItem/${id.id}`)
             .then(res => res.json())
     })
 
@@ -63,6 +64,10 @@ const SelectedItemDetails = () => {
                 })
                 .catch(err => setLoading(false));
         }, [selectedItem._id, isReported])
+
+        if(isLoading){
+            return <Loading />
+        }
 
     return (
         <div className='max-w-[500px] mx-auto py-16'>

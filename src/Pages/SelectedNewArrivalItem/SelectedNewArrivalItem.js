@@ -3,16 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { HiCheckCircle } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
+import Loading from '../../components/Loading';
 
 const SelectedNewArrivalItem = () => {
     const id = useParams();
-    const [reported, setReported] = useState('');
+
+    //* work letter
+    /* const [reported, setReported] = useState('');
     const [isReported, setIsReported] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false); */
 
     const { data: newArrivalItem = [], isLoading } = useQuery({
         queryKey: ['newArrivalItem', id.id],
-        queryFn: () => fetch(`http://localhost:5000/newArrivalItem/${id.id}`)
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/newArrivalItem/${id.id}`)
             .then(res => res.json())
     })
 
@@ -33,7 +36,8 @@ const SelectedNewArrivalItem = () => {
         storage,
         color } = newArrivalItem;
 
-    const handleReportItem = (newArrivalItem) => {
+        //* work letter
+    /* const handleReportItem = (newArrivalItem) => {
         const reportedItem = { ...newArrivalItem, status: 'reported' };
         fetch('https://e-buy-phi.vercel.app/reportedItems', {
             method: 'POST',
@@ -62,7 +66,11 @@ const SelectedNewArrivalItem = () => {
                 setLoading(false)
             })
             .catch(err => setLoading(false));
-    }, [newArrivalItem._id, isReported])
+    }, [newArrivalItem._id, isReported]) */
+
+    if(isLoading){
+        return <Loading />
+    }
 
     return (
         <div className='max-w-[500px] mx-auto py-16'>
@@ -104,7 +112,9 @@ const SelectedNewArrivalItem = () => {
                                 <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                             </button>
                         </Link>
-                        {
+
+                        {/* work letter */}
+                        {/* {
                             loading ||
                             <button
                                 disabled={reported && true}
@@ -113,7 +123,8 @@ const SelectedNewArrivalItem = () => {
                             >
                                 {reported ? reported :
                                     'Report this item'}
-                            </button>}
+                            </button>} */}
+
                     </div>
                 </div>
             </div>

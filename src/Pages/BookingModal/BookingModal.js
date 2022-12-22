@@ -1,4 +1,5 @@
-import React from 'react';
+//* work letter
+/* import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -109,4 +110,4 @@ const BookingModal = ({ selectedProduct, closeModal }) => {
     );
 };
 
-export default BookingModal;
+export default BookingModal; */
