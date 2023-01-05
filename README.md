@@ -2,7 +2,7 @@
 
 ## Admin Profile
 
-### adminEmail: mohammer@takbir.com
+### adminEmail: mohammed@takbir.com
 ### adminPassword: 12365478p
 
 ## Live Link
