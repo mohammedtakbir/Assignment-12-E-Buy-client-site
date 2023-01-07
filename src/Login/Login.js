@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import { useToken } from "../Hooks/useToken";
@@ -16,6 +17,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
+  const [viewPassword, setViewPassword] = useState(false);
 
   if (token) {
     navigate(from, { replace: true });
@@ -106,16 +108,23 @@ const Login = () => {
               </p>
             )}
           </div>
-          <div>
+          <div className="relative">
             <label className="block mb-2 text-sm font-medium text-gray-900">
               Password
             </label>
             <input
               placeholder="Insert Your Password"
               {...register("password", { required: "Password is required" })}
-              type="password"
+              type={viewPassword ? 'text' : 'password'}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             />
+            <div className='absolute top-[25px] bottom-0 right-[10px] flex items-center cursor-pointer'>
+              {viewPassword ?
+                <FaEyeSlash onClick={() => setViewPassword(!viewPassword)} />
+                :
+                <FaEye onClick={() => setViewPassword(!viewPassword)} />
+              }
+            </div>
             {errors.password && (
               <p role="alert" className="text-red-500 text-sm">
                 {errors.password?.message}
