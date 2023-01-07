@@ -5,8 +5,10 @@ import toast from 'react-hot-toast';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import Loading from '../../components/Loading';
 import { HiCheckCircle } from "react-icons/hi";
+import { useTitle } from '../../Hooks/useTitle';
 
 const AllSellers = () => {
+    useTitle('All Sellers');
     const [deletingSeller, setDeletingSeller] = useState(null);
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],

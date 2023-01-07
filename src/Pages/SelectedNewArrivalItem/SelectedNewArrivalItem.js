@@ -4,9 +4,11 @@ import { toast } from 'react-hot-toast';
 import { HiCheckCircle } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const SelectedNewArrivalItem = () => {
     const id = useParams();
+    
 
     //* work letter
     /* const [reported, setReported] = useState('');
@@ -35,6 +37,8 @@ const SelectedNewArrivalItem = () => {
         year_of_use,
         storage,
         color } = newArrivalItem;
+
+        useTitle(isLoading ? 'Loading' : `${model_name} - ${storage}GB`);
 
         //* work letter
     /* const handleReportItem = (newArrivalItem) => {

@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const BookingPage = () => {
     const id = useParams();
@@ -18,7 +19,7 @@ const BookingPage = () => {
     })
 
     const { model_name, image, resale_price, _id, condition, color, storage } = selectedProduct;
-
+    useTitle(isLoading ? 'Loading' : `${model_name} - ${storage}GB`);
     const handleBooking = (e) => {
         setLoading(true);
         e.preventDefault();
@@ -27,7 +28,6 @@ const BookingPage = () => {
         const email = user?.email;
         const phone = form.phone.value;
         const location = form.location.value;
-        console.log(phone, location)
 
         const booking = {
             ProductName: model_name,

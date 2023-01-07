@@ -3,10 +3,12 @@ import React from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
 const ProductCategory = () => {
+    useTitle('Popular Products');
     const name = useParams();
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { data: products = [], isLoading } = useQuery({

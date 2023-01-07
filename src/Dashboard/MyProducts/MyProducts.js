@@ -6,8 +6,10 @@ import toast from 'react-hot-toast';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { useTitle } from '../../Hooks/useTitle';
 
 const MyProducts = () => {
+    useTitle('My Products');
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
     const [loading, setLoading] = useState(false);

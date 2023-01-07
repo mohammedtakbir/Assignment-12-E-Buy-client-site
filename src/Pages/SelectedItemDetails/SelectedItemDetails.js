@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { HiCheckCircle } from 'react-icons/hi';
 import { Link, useParams } from 'react-router-dom';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const SelectedItemDetails = () => {
     const id = useParams();
@@ -33,6 +34,8 @@ const SelectedItemDetails = () => {
         year_of_use,
         storage,
         color } = selectedItem;
+
+        useTitle(isLoading ? 'Loading...' : `${model_name} - ${storage}GB`);
 
         const handleReportItem = (selectedItem) => {
             const reportedItem = { ...selectedItem, status: 'reported' };

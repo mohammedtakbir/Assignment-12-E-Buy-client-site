@@ -5,10 +5,12 @@ import CheckoutForm from '../CheckoutForm/CheckoutForm';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const stripePromise = loadStripe(process.env.REACT_APP_stripe_pk);
 
 const Payment = () => {
+    useTitle('Payment');
     const orderId = useParams();
 
     const { data: order = {}, isLoading } = useQuery({

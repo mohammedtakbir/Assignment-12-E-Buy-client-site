@@ -4,8 +4,10 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const AllBuyers = () => {
+    useTitle('All Buyers');
     const [deletingBuyer, setDeletingBuyer] = useState(null);
     const { data: buyers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers'],

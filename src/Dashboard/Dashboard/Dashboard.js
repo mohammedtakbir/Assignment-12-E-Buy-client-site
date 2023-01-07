@@ -1,9 +1,11 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { useTitle } from '../../Hooks/useTitle';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
+    useTitle(`${user.displayName}`);
     return (
         <>
             <div className=' text-gray-700 items-center mt-[30px] xl:ml-[150px]'>

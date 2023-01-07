@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import { useTitle } from "../Hooks/useTitle";
 import { useToken } from "../Hooks/useToken";
 
 const Login = () => {
+  useTitle('Log In');
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [loginError, setLoginError] = useState("");

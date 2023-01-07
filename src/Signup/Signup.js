@@ -7,8 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useToken } from '../Hooks/useToken';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useTitle } from '../Hooks/useTitle';
 
 const Signup = () => {
+    useTitle('Sign Up');
     const [loading, setLoading] = useState(false);
     const [googleLoading, setGoogleLoading] = useState(false);
     const [signUpError, setSignupError] = useState('');

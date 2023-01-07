@@ -5,8 +5,10 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import axios from 'axios';
+import { useTitle } from '../../Hooks/useTitle';
 
 const AddAProducts = () => {
+    useTitle('Add a Product');
     const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
     const [isVerified, setIsVerified] = useState(false);

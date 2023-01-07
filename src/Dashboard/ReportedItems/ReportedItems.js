@@ -4,8 +4,10 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import Loading from '../../components/Loading';
+import { useTitle } from '../../Hooks/useTitle';
 
 const ReportedItems = () => {
+    useTitle('Reported Items');
     const [deleteReportedItem, setDeleteReportedItem] = useState(null);
     const { data: reportedItems = [], isLoading, refetch } = useQuery({
         queryKey: [''],

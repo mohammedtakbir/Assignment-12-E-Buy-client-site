@@ -4,8 +4,10 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { useTitle } from '../../Hooks/useTitle';
 
 const Orders = () => {
+    useTitle('My Orders');
     const { user, userSignOut } = useContext(AuthContext);
 
     const { data: orders = [], isLoading } = useQuery({
