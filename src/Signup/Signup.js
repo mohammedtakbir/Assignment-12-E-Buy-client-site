@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useToken } from '../Hooks/useToken';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Signup = () => {
     const [loading, setLoading] = useState(false);
@@ -15,6 +16,7 @@ const Signup = () => {
     const { createUser, googleAuthentication, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [viewPassword, setViewPassword] = useState(false);
 
     const [token] = useToken(createdUserEmail);
     if (token) {
@@ -33,7 +35,6 @@ const Signup = () => {
                 .catch(err => {
                     setLoading(false);
                     setSignupError(err.message);
-                    console.error(err);
                 })
         } else {
             createUser(data.email, data.password)
@@ -45,7 +46,6 @@ const Signup = () => {
                 .catch(err => {
                     setLoading(false);
                     setSignupError(err.message);
-                    console.error(err);
                 })
         }
     };
@@ -147,7 +147,7 @@ const Signup = () => {
                         {errors.email && <p role='alert' className='text-red-500 text-sm'>{errors.email?.message}</p>}
                         {signUpError && <p className='text-red-500 !mt-0 text-sm'>{signUpError}</p>}
                     </div>
-                    <div>
+                    <div className="relative">
                         <label className="block mb-2 text-sm font-medium text-gray-900">password</label>
                         <input
                             placeholder='Insert Your Password'
@@ -157,9 +157,16 @@ const Signup = () => {
                                     pattern: { value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, message: ' Minimum eight characters, at least one letter and one number' }
                                 }
                             )}
-                            type="password"
+                            type={viewPassword ? 'text' : 'password'}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         />
+                        <div className='absolute top-[25px] bottom-0 right-[10px] flex items-center cursor-pointer'>
+                            {viewPassword ?
+                                <FaEyeSlash onClick={() => setViewPassword(!viewPassword)} />
+                                :
+                                <FaEye onClick={() => setViewPassword(!viewPassword)} />
+                            }
+                        </div>
                         {errors.password && <p role='alert' className='text-red-500 text-sm'>{errors.password?.message}</p>}
                     </div>
                     <p className='pb-2 text-sm font-medium text-gray-900'>What type of account you want?</p>

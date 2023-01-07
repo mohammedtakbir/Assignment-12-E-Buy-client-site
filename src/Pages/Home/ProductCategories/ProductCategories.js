@@ -15,7 +15,7 @@ const ProductCategories = () => {
     }
 
     return (
-        <div className='container mx-auto sm:py-[60px] py-[30px]'>
+        <div className='container mx-auto sm:py-[60px] py-[30px]' id='popular-products'>
             <h1 className='sm:text-3xl text-2xl sm:mb-14 mb-10 text-center'>Explore Popular Brands</h1>
             <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5'>
                 {categories.map((category) => (

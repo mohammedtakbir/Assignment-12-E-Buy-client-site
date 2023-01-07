@@ -10,7 +10,7 @@ const Login = () => {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
   const { register, handleSubmit, formState: { errors }, getValues, } = useForm();
-  const { userLogin, googleAuthentication, resetPassword } =useContext(AuthContext);
+  const { userLogin, googleAuthentication, resetPassword } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";

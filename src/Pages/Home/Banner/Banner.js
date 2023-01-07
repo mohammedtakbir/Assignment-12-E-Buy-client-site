@@ -7,9 +7,9 @@ const Banner = () => {
                 <div className="max-w-lg mx-auto">
                     <h1 className="text-3xl font-semibold text-gray-800 lg:text-4xl">Get up to 50% Off on this Black Friday!</h1>
                     <p className="mt-6 text-gray-500">We're bringing you all the best Black Friday phone deals, so you can just keep an eye on this page.</p>
-                    <button className="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-gray-700 rounded-lg hover:bg-gray-800 lg:mx-0 lg:w-auto focus:outline-none">
+                    <a href='#popular-products' className="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-gray-700 rounded-lg hover:bg-gray-800 lg:mx-0 lg:w-auto focus:outline-none inline-block">
                         Shop Now
-                    </button>
+                    </a>
                 </div>
 
                 <div className="flex justify-center mt-10">
