@@ -26,7 +26,7 @@ Hosted in Firebase -> [E-Buy.com]()
 ## Tools and Technologies
 Front-end: HTML, CSS, JavaScript, React
 ##
-Back-end: Node, ExpressJS, MongoDB
+Back-end: Node, ExpressJS, MongoDB, Vercel
 
 ## For user Authentication
 [Firebase](https://firebase.google.com/)
