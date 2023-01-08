@@ -72,7 +72,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                     </div>
                     <div className='xl:flex justify-between xl:mb-2'>
                         <p className='text-sm text-gray-500 xl:w-1/2 capitalize xl:mb-0 mb-1'>Color: {color}</p>
-                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Storage: {storage}GB</p>
+                        <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Storage: {storage}</p>
                     </div>
                     <div className='xl:flex  justify-between xl:mb-2'>
                         <p className='text-sm text-gray-500 xl:w-1/2 xl:mb-0 mb-1'>Original Price: ${original_price}</p>

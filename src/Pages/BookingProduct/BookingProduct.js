@@ -20,6 +20,7 @@ const BookingPage = () => {
     })
 
     const { model_name, image, resale_price, _id, condition, color, storage, specification } = selectedProduct;
+
     //* work letter
     /* const {
         chipset,
@@ -38,7 +39,7 @@ const BookingPage = () => {
     }
         = specification; */
 
-    useTitle(isLoading ? 'Loading' : `${model_name} - ${storage}GB`);
+    useTitle(isLoading ? 'Loading' : `${model_name} - ${storage}`);
 
     const handleBooking = (e) => {
         setLoading(true);
@@ -105,7 +106,7 @@ const BookingPage = () => {
                             <div className='mb-2'>
                                 <p className='mt-2 text-sm'>Condition: <span className='font-semibold'>{condition}</span></p>
                                 <p className='text-sm'>color: <span className='font-semibold'>{color}</span></p>
-                                <p className='text-sm'>Storage: <span className='font-semibold'>{storage}GB</span></p>
+                                <p className='text-sm'>Storage: <span className='font-semibold'>{storage}</span></p>
                             </div>
                             <hr />
                             <p className="py-1 text-sm">Price: <span className='font-semibold sm:text-2xl text-xl'>${resale_price}</span></p>
@@ -122,7 +123,7 @@ const BookingPage = () => {
                                     name='location'
                                     type="text"
                                     placeholder="Meeting Location"
-                                    className="input input-bordered w-full mb-2 text-sm !h-10"
+                                    className="input input-bordered w-full mb-4 text-sm !h-10"
                                     required
                                 />
                                 <button
@@ -135,85 +136,119 @@ const BookingPage = () => {
                     </div>
                 </div>
             </div>
-            {
-                <div className='max-w-[1200px] xl:mx-auto mx-2 my-10 border p-3 rounded-sm'>
-                    <h2 className='text-xl font-medium mb-5'>Description</h2>
-                    <div className='lg:flex text-sm gap-5'>
-                        <div className='lg:w-1/2'>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Condition:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.condition}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{model_name}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Color:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{color}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Lock Status: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.lock_status}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Network: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.network}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Operating system: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.operating_system}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Storage Capacity: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{storage}GB</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Connectivity: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.connectivity}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Manufacturer Warranty: </p>
-                                <p className='lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.manufacturer_warranty}</p>
-                            </div>
+            <div className='max-w-[1200px] xl:mx-auto mx-2 sm:my-20 my-10 border p-3 rounded-sm'>
+                <h2 className='text-xl font-medium mb-5'>Description</h2>
+                <div className='lg:flex text-sm gap-5'>
+                    <div className='lg:w-1/2'>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Condition:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.condition}</p>
                         </div>
-                        <div className='lg:w-1/2'>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Processor:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.processor}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Chipset:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.chipset}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model Number:</p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.model_number}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Features: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.features}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Screen Size: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.screen_size} in</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>RAM: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.ram}GB</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>SIM Card Slot: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.sim_card_slot}</p>
-                            </div>
-                            <div className='flex'>
-                                <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Contract: </p>
-                                <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.contract}</p>
-                            </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.model_name}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Brand:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.brand}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Dimensions:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.Dimensions}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Weight:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.weight}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>SIM:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.SIM}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Display Technology:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.display_technology}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Display Size:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.display_size}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Display Resolution:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.display_resolution}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Processor:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.processor}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Chipset:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.chipset}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Internal Storage:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.storage}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Rear Camera:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.rear_camera}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Front Camera:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.front_camera}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>3.5mm jack:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.headphone_jack}</p>
+                        </div>
+                    </div>
+                    <div className='lg:w-1/2'>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Connectivity:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.connectivity}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>RAM:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.ram}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Sensors:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.sensors}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Battery:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.Battery}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Operating System:</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.operating_system}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Color: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.color}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model Number: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.model_number}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Lock Status: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.lock_status}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>SIM Card Slot: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.features}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Manufacturer Warranty: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.manufacturer_warranty}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Region of Origin: </p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.region_of_origin}</p>
                         </div>
                     </div>
                 </div>
-            }
+            </div>
         </>
     );
 };
