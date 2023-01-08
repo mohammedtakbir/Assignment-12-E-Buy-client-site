@@ -92,7 +92,6 @@ const Signup = () => {
             })
             .catch(err => {
                 setGoogleLoading(false);
-                console.log(err)
             })
     }
 

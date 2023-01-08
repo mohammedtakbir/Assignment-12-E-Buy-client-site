@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const NewArrivalProduct = ({ newArrivalProduct }) => {
     const { image, model_name, resale_price, _id } = newArrivalProduct;
-    console.log(_id)
 
     return (
         <div className='hover:shadow-xl duration-300 border border-gray-100 shadow-md cursor-pointer rounded-md text-center p-5 md:mx-0 mx-3'>

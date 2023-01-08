@@ -9,7 +9,6 @@ import { useTitle } from '../../Hooks/useTitle';
 
 const BookingPage = () => {
     const id = useParams();
-    console.log(id.id)
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
 

@@ -18,12 +18,8 @@ const AddAProducts = () => {
         .then(function (response) {
             setIsVerified(response.data.isVerified);
         })
-        .catch(function (error) {
-            console.log(error);
-        })
-        .finally(function () {
-
-        });
+        .catch(function (error) {})
+        .finally(function () {});
 
     const navigate = useNavigate();
     const handleAddProduct = (e) => {

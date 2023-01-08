@@ -12,9 +12,7 @@ const Navbar = () => {
             .then(() => {
                 toast.success('Sign Out Successfully')
             })
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => {})
     }
 
     const menuItems = <>

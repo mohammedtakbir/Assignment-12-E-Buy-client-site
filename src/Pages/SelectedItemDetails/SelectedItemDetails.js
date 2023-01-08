@@ -50,8 +50,7 @@ const SelectedItemDetails = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.acknowledged) {
-                        setIsReported(!false)
-                        console.log(data)
+                        setIsReported(!false);
                         toast.success('Reported this item successfully');
                     }
                 })

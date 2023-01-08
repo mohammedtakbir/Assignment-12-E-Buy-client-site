@@ -6,7 +6,7 @@ import NewArrivalProduct from './NewArrivalProduct';
 const NewArrivalProducts = () => {
     const { data: newArrivalProducts = [], isLoading } = useQuery({
         queryKey: ['newArrivalProducts'],
-        queryFn: () => fetch(`http://localhost:5000/newArrivalProducts`)
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/newArrivalProducts`)
             .then(res => res.json())
     })
     if (isLoading) {

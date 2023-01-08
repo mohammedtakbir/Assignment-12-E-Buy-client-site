@@ -17,7 +17,7 @@ const SelectedNewArrivalItem = () => {
 
     const { data: newArrivalItem = [], isLoading } = useQuery({
         queryKey: ['newArrivalItem', id.id],
-        queryFn: () => fetch(`http://localhost:5000/newArrivalItem/${id.id}`)
+        queryFn: () => fetch(`https://e-buy-phi.vercel.app/newArrivalItem/${id.id}`)
             .then(res => res.json())
     })
 
