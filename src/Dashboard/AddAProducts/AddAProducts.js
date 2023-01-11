@@ -42,6 +42,32 @@ const AddAProducts = () => {
         const storage = form.storage.value;
         const description = form.description.value;
 
+        const network = form.network.value;
+        const Dimensions = form.dimensions.value;
+        const weight = form.weight.value;
+        const build = form.build.value;
+        const SIM = form.sim.value;
+        const display_technology = form.display_technology.value;
+        const display_size = form.Display_size.value;
+        const display_resolution = form.display_resolution.value;
+        const processor = form.processor.value;
+        const chipset = form.chipset.value;
+        const rear_camera = form.rear_camera.value;
+        const front_camera = form.front_camera.value;
+        const headphone_jack = form.headphone_jack.value;
+        const connectivity = form.connectivity.value;
+        const region_of_origin = form.origin.value;
+        const sensors = form.sensors.value;
+        const battery = form.battery.value;
+        const operating_system = form.operating_system.value;
+        const ram = form.ram.value;
+        const model_number = form.model_number.value;
+        const contract = form.contract.value;
+        const lock_status = form.lock_status.value;
+        const manufacturer_warranty = form.manufacturer_warranty.value;
+        const features = form.features.value;
+
+
         const image = form.image.files[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -73,7 +99,31 @@ const AddAProducts = () => {
                     storage,
                     status: 'available',
                     specification: {
-
+                        network,
+                        Dimensions,
+                        weight,
+                        build,
+                        SIM,
+                        display_technology,
+                        display_size,
+                        display_resolution,
+                        processor,
+                        chipset,
+                        storage,
+                        rear_camera,
+                        front_camera,
+                        headphone_jack,
+                        connectivity,
+                        sensors,
+                        battery,
+                        operating_system,
+                        ram,
+                        model_number,
+                        contract,
+                        lock_status,
+                        manufacturer_warranty,
+                        features,
+                        region_of_origin
                     }
                 };
 
@@ -256,7 +306,10 @@ const AddAProducts = () => {
                             placeholder=" "
                             required
                         />
-                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Storage(128GB)</label>
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                            Storage(128GB)
+                        </label>
                     </div>
                     <div className="relative z-0 mb-6 w-full group">
                         <input
@@ -281,7 +334,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="network"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -297,7 +350,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="dimensions"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -307,7 +360,7 @@ const AddAProducts = () => {
                         origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                         peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            Dimensions(162.5 x 74.8 x 8.6 mm (6.40 x 2.94 x 0.34 in))
+                            Dimensions(162.5 x 74.8 x 8.6 mm)
                         </label>
                     </div>
                 </div>
@@ -315,7 +368,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="weight"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -331,7 +384,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="build"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -341,7 +394,7 @@ const AddAProducts = () => {
                         origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 
                         peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            Build(Glass front, glass back, aluminum frame)
+                            Build(Front and Back part, Frame)
                         </label>
                     </div>
                 </div>
@@ -349,7 +402,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="sim"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -359,13 +412,13 @@ const AddAProducts = () => {
                             origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                             peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            SIM(Single SIM (Nano-SIM) or Hybrid Dual SIM)
+                            SIM(Single, Nano or Hybrid Dual SIM)
                         </label>
                     </div>
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="display_technology"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -375,7 +428,7 @@ const AddAProducts = () => {
                             origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 
                             peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            Display Technology(Super AMOLED, IPS LCD)
+                            Display Technology(OLED, IPS LCD)
                         </label>
                     </div>
                 </div>
@@ -383,7 +436,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="Display_size"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -399,7 +452,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="display_resolution"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -417,7 +470,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="processor"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -433,7 +486,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="chipset"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -451,7 +504,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="rear_camera"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -467,7 +520,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="front_camera"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -484,7 +537,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="headphone_jack"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -499,7 +552,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="connectivity"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -509,7 +562,7 @@ const AddAProducts = () => {
                         peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                         peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            Connectivity(2G, 3G, 4G, Bluetooth 5.0, GPRS, GPS)
+                            Connectivity(2G, 3G, 4G, Bluetooth, GPS)
                         </label>
                     </div>
                 </div>
@@ -517,17 +570,20 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="origin"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
                         />
-                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Storage(128GB)</label>
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                            Region of Origin(China)
+                        </label>
                     </div>
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="sensors"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -545,7 +601,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="battery"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -561,7 +617,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="operating_system"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -579,7 +635,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="ram"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -595,7 +651,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="model_number"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -613,7 +669,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="contract"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -629,7 +685,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="lock_status"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -647,7 +703,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="storage"
+                            name="manufacturer_warranty"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -663,7 +719,7 @@ const AddAProducts = () => {
                     <div className="relative z-0 mb-6 w-full group">
                         <input
                             type="text"
-                            name="color"
+                            name="description"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -673,14 +729,14 @@ const AddAProducts = () => {
                         origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
                         peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
-                            Region of Origin
+                            Description
                         </label>
                     </div>
                 </div>
                 <div className="relative z-0 mb-6 w-full group">
                     <input
                         type="text"
-                        name="description"
+                        name="features"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                         required
@@ -692,16 +748,6 @@ const AddAProducts = () => {
                     >
                         Features
                     </label>
-                </div>
-                <div className="relative z-0 mb-6 w-full group">
-                    <input
-                        type="text"
-                        name="description"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                    />
-                    <label className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Description</label>
                 </div>
                 <button type="submit" className="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">{loading ? 'Loading...' : 'Add Product'}</button>
             </form>
