@@ -123,14 +123,14 @@ const Login = () => {
 
           <div className="flex justify-between items-start !mt-1">
             <div>
-              <div class="flex items-center mt-1">
+              <div className="flex items-center mt-1">
                 <input
                   onClick={() => setViewPassword(!viewPassword)}
                   type="checkbox"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                   id='show_password'
                 />
-                <label for="show_password" class="ml-2 text-sm font-medium text-gray-900">Show Password</label>
+                <label htmlFor="show_password" className="ml-2 text-sm font-medium text-gray-900">Show Password</label>
               </div>
               {errors.password && (
                 <p role="alert" className="text-red-500 text-sm">

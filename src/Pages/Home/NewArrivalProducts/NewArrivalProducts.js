@@ -12,8 +12,6 @@ const NewArrivalProducts = () => {
     if (isLoading) {
         return <Loading />
     };
-
-    console.log(newArrivalProducts)
     
     return (
         <>
