@@ -63,7 +63,9 @@ const AllSellers = () => {
 
     return (
         <>
-            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>All Sellers</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>
+                {sellers.length < 1 ? `No Seller Found` : sellers.length < 2 ? 'Seller' : 'All Sellers'}
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-[1000px]">
                     <thead>

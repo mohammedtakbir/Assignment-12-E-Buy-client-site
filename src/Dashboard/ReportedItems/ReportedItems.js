@@ -46,7 +46,9 @@ const ReportedItems = () => {
 
     return (
         <>
-            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>Reported Items</h2>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>
+                {reportedItems.length < 1 ? `No Reported Item found` : reportedItems.length < 2 ? 'Reported Item' : 'Reported Items'}
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-[800px]">
                     <thead>

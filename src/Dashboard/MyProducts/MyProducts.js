@@ -13,7 +13,6 @@ const MyProducts = () => {
     useTitle('My Products');
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
-    const [loading, setLoading] = useState(false);
     const [advertise, setAdvertise] = useState(false);
 
     const handleAdvertiseItem = (product) => {

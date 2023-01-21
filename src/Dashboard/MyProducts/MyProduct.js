@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import SmallLoading from '../../components/SmallLoading';
 
 const MyProduct = ({ product, i, handleAdvertiseItem, setDeletingProduct, advertise }) => {
     const [isAdvertise, setIsAdvertise] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://e-buy-phi.vercel.app/isAdvertise/${product._id}`)
             .then(res => res.json())
-            .then(data => setIsAdvertise(data?.isAdvertise))
+            .then(data => {
+                setIsAdvertise(data?.isAdvertise);
+                setLoading(false);
+            })
+            .catch(err => setLoading(false));
     }, [product._id, advertise]);
 
     return (
@@ -25,11 +32,12 @@ const MyProduct = ({ product, i, handleAdvertiseItem, setDeletingProduct, advert
                 <td className='font-medium'>${product.resale_price}</td>
                 <td className='capitalize font-medium'>{product.status}</td>
                 <td>
-                    <button
-                        onClick={() => handleAdvertiseItem(product)}
-                        disabled={(((product.status === 'sold') && true) || (isAdvertise && true))}
-                        className='btn btn-sm'>{isAdvertise ? 'Advertised' : 'Advertise'}
-                    </button>
+                    {loading ? <SmallLoading /> :
+                        <button
+                            onClick={() => handleAdvertiseItem(product)}
+                            disabled={(((product.status === 'sold') && true) || (isAdvertise && true))}
+                            className='btn btn-sm'>{isAdvertise ? 'Advertised' : 'Advertise'}
+                        </button>}
                 </td>
                 <td>
                     <label
