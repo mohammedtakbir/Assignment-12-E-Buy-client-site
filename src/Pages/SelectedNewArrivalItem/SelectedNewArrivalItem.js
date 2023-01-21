@@ -21,6 +21,8 @@ const SelectedNewArrivalItem = () => {
             .then(res => res.json())
     })
 
+    console.log(newArrivalItem)
+
     const { image,
         brand,
         location,

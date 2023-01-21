@@ -83,6 +83,8 @@ const MyProducts = () => {
             })
     };
 
+    console.log(products)
+
     return (
         <>
             <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>My Products</h2>
@@ -101,7 +103,7 @@ const MyProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((product, i) => (
+                            products?.map((product, i) => (
                                 <tr key={product._id}>
                                     <th>{i + 1}</th>
                                     <td>
