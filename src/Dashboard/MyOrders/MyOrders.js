@@ -29,8 +29,11 @@ const Orders = () => {
     }
 
     return (
-        <div>
-            <h2 className='sm:text-3xl text-2xl mb-3 mt-7 ml-3'>My Orders</h2>
+        <section>
+            <p className='text-center'><small></small></p>
+            <h2 className='sm:text-3xl text-2xl mb-3 mt-6  ml-3'>
+                {orders.length < 1 ? `You have not order any product` : orders.length < 2 ? 'My Order' : 'My Orders'}
+            </h2>
             <div className="overflow-x-auto">
                 <table className="table w-[800px]">
                     <thead>
@@ -70,7 +73,7 @@ const Orders = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </section>
     );
 };
 

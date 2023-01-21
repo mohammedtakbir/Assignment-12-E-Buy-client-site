@@ -60,7 +60,7 @@ const BookingPage = () => {
             productId: _id
         };
 
-        fetch('https://e-buy-phi.vercel.app/bookings', {
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,8 +78,8 @@ const BookingPage = () => {
                     toast.success(`${model_name} is booked successfully!`)
 
                 } else {
-                    toast.error(data.message)
-                    setLoading(false)
+                    toast.error(data.message);
+                    setLoading(false);
                 }
             })
             .catch(err => setLoading(false))
@@ -103,9 +103,9 @@ const BookingPage = () => {
                             <p className='text-xs text-gray-600 mt-1'>FREE Next Day Express Delivery,FREE Returns,Great Price</p>
                             <hr />
                             <div className='mb-2'>
-                                <p className='mt-2 text-sm'>Condition: <span className='font-semibold'>{condition}</span></p>
-                                <p className='text-sm'>color: <span className='font-semibold'>{color}</span></p>
-                                <p className='text-sm'>Storage: <span className='font-semibold'>{storage}</span></p>
+                                <p className='mt-2 text-sm capitalize'>Condition: <span className='font-semibold'>{condition}</span></p>
+                                <p className='text-sm capitalize'>color: <span className='font-semibold'>{color}</span></p>
+                                <p className='text-sm'>Storage(GB): <span className='font-semibold'>{storage}</span></p>
                             </div>
                             <hr />
                             <p className="py-1 text-sm">Price: <span className='font-semibold sm:text-2xl text-xl'>${resale_price}</span></p>
@@ -141,15 +141,15 @@ const BookingPage = () => {
                     <div className='lg:w-1/2'>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Condition:</p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.condition}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%] capitalize'>{selectedProduct?.condition}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model:</p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.model_name}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%] capitalize'>{selectedProduct?.model_name}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Brand:</p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.brand}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%] capitalize'>{selectedProduct?.brand}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Dimensions:</p>
@@ -184,15 +184,15 @@ const BookingPage = () => {
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.chipset}</p>
                         </div>
                         <div className='flex'>
-                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Internal Storage:</p>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Internal Storage(GB):</p>
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.storage}</p>
                         </div>
                         <div className='flex'>
-                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Rear Camera:</p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.rear_camera}</p>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Rear Camera(MP):</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.rear_camera}MP</p>
                         </div>
                         <div className='flex'>
-                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Front Camera:</p>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Front Camera(MP):</p>
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.front_camera}</p>
                         </div>
                         <div className='flex'>
@@ -206,7 +206,7 @@ const BookingPage = () => {
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.connectivity}</p>
                         </div>
                         <div className='flex'>
-                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>RAM:</p>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>RAM(GB):</p>
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.ram}</p>
                         </div>
                         <div className='flex'>
@@ -215,7 +215,7 @@ const BookingPage = () => {
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Battery:</p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.Battery}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.battery}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Operating System:</p>
@@ -223,7 +223,7 @@ const BookingPage = () => {
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Color: </p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.color}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{selectedProduct?.color}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Model Number: </p>
@@ -238,12 +238,12 @@ const BookingPage = () => {
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.features}</p>
                         </div>
                         <div className='flex'>
-                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Manufacturer Warranty: </p>
+                            <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Manufacturer Warranty(Year): </p>
                             <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.manufacturer_warranty}</p>
                         </div>
                         <div className='flex'>
                             <p className='mb-2 lg:w-[30%] sm:w-[25%] w-[40%]'>Region of Origin: </p>
-                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%]'>{specification?.region_of_origin}</p>
+                            <p className='mb-2 lg:w-[70%] sm:w-[75%] w-[60%] capitalize'>{specification?.region_of_origin}</p>
                         </div>
                     </div>
                 </div>
