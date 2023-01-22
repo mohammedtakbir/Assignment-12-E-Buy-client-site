@@ -38,7 +38,7 @@ const BookingPage = () => {
     }
         = specification; */
 
-    useTitle(isLoading ? 'Loading' : `${model_name} - ${storage}`);
+    useTitle(isLoading ? 'Loading...' : `${model_name} - ${storage}`);
 
     const handleBooking = (e) => {
         setLoading(true);
