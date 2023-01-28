@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -20,7 +19,7 @@ const ProductCategory = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/products?name=${name.name}&sort=${sortValue}`)
+        fetch(`https://e-buy-phi.vercel.app/products?name=${name.name}&sort=${sortValue}`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false);
@@ -55,7 +54,7 @@ const ProductCategory = () => {
         e.preventDefault();
         const searchText = e.target.search.value;
 
-        fetch(`http://localhost:5000/searchProducts?search=${searchText}`)
+        fetch(`https://e-buy-phi.vercel.app/searchProducts?search=${searchText}`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false);

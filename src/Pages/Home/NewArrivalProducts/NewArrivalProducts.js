@@ -16,7 +16,7 @@ const NewArrivalProducts = () => {
     return (
         <>
             {newArrivalProducts.length > 0 &&
-                <div className='container mx-auto sm:pt-16 pt-12 sm:pb-8 pb-5'>
+                <div className='container mx-auto sm:pt-16 pt-3 sm:pb-8 pb-5'>
                     <div className='text-center md:mx-0 mx-3'>
                         <p className='text-sm text-blue-500'>Hurry up to buy!</p>
                         <h2 className='text-3xl mt-4 sm:mb-5 mb-4'>New Arrivals!!!</h2>
