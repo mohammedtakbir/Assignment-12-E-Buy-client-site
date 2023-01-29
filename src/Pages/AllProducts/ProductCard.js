@@ -32,8 +32,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
         fetch('https://e-buy-phi.vercel.app/reportedItems', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                'content-type': 'application/json'
             },
             body: JSON.stringify(reportedItem)
         })
@@ -55,7 +54,7 @@ const ProductCard = ({ product, setSelectedProduct }) => {
                 setLoading(false)
             })
             .catch(err => setLoading(false));
-    }, [product._id, isReported])
+    }, [product._id, isReported]);
 
     return (
         <>

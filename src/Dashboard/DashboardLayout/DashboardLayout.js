@@ -17,7 +17,7 @@ const DashboardLayout = () => {
         <div className='bg-gray-50'>
             <Navbar />
 
-            <div className="drawer drawer-mobile container mx-auto">
+            <div className="drawer drawer-mobile max-w-[1400px] mx-auto">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet />

@@ -112,7 +112,7 @@ const ProductCategory = () => {
                     </form>
                 </div>
                 {loading ? <Loading /> :
-                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:gap-8 gap-0 gap-y-8 pb-20'>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xl:gap-5 gap-0 gap-y-8 pb-20'>
                         {
                             products.map((product) => <ProductCard
                                 key={product._id}

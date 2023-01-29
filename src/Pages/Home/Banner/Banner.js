@@ -24,7 +24,7 @@ const Banner = () => {
                 </div>
             </div> */}
 
-            <section className='py-[50px] max-w-[1350px] mx-auto px-5 md:block hidden'>
+            <section className='py-[50px] max-w-[1300px] mx-auto px-5 md:block hidden'>
                 <div>
                     <Swiper
                         spaceBetween={30}

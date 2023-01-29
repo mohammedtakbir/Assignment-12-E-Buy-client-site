@@ -22,12 +22,12 @@ const QualityFeatures = () => {
     ]
 
     return (
-        <div className='container mx-auto sm:pb-[60px] pb-[40px] lg:pt-[40px] pt-0'>
-            <div className='text-center md:mx-0 mx-3'>
+        <div className='max-w-[1300px] mx-auto sm:pb-[60px] pb-[40px] lg:pt-[40px] pt-0 px-3'>
+            <div className='text-center'>
                 <p className='text-blue-500 text-sm'>Quality Is More Than Making a Good Product</p>
                 <h3 className='sm:text-3xl text-2xl mt-4 mb-5'>We Provide High Quality Goods</h3>
                 <p className='text-gray-500 text-sm'>Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.</p>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:gap-10 gap-8 sm:mt-14 mt-10'>
+                <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-10 sm:gap-5 gap-8 sm:mt-14 mt-10'>
                     {
                         features.map((feature, i) => <Feature
                             key={i}

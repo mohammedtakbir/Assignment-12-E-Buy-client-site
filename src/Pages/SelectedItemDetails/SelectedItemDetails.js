@@ -35,41 +35,41 @@ const SelectedItemDetails = () => {
         storage,
         color } = selectedItem;
 
-        useTitle(isLoading ? 'Loading...' : `${model_name} - ${storage}`);
+    useTitle(isLoading ? 'Loading...' : `${model_name} - ${storage}`);
 
-        const handleReportItem = (selectedItem) => {
-            const reportedItem = { ...selectedItem, status: 'reported' };
-            fetch('https://e-buy-phi.vercel.app/reportedItems', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                },
-                body: JSON.stringify(reportedItem)
+    const handleReportItem = (selectedItem) => {
+        const reportedItem = { ...selectedItem, status: 'reported' };
+        fetch('https://e-buy-phi.vercel.app/reportedItems', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(reportedItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    setIsReported(!false);
+                    toast.success('Reported this item successfully');
+                }
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.acknowledged) {
-                        setIsReported(!false);
-                        toast.success('Reported this item successfully');
-                    }
-                })
-        }
-    
-        useEffect(() => {
-            setLoading(true);
-            fetch(`https://e-buy-phi.vercel.app/reportedItems/${selectedItem._id}`)
-                .then(res => res.json())
-                .then(data => {
-                    setReported(data.reportedStatus)
-                    setLoading(false)
-                })
-                .catch(err => setLoading(false));
-        }, [selectedItem._id, isReported])
+    }
 
-        if(isLoading){
-            return <Loading />
-        }
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://e-buy-phi.vercel.app/reportedItems/${selectedItem._id}`)
+            .then(res => res.json())
+            .then(data => {
+                setReported(data.reportedStatus)
+                setLoading(false)
+            })
+            .catch(err => setLoading(false));
+    }, [selectedItem._id, isReported])
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <div className='max-w-[500px] mx-auto py-16'>
@@ -112,15 +112,16 @@ const SelectedItemDetails = () => {
                             </button>
                         </Link>
                         {
-                        loading ||
-                        <button
-                            disabled={reported && true}
-                            onClick={() => handleReportItem(selectedItem)}
-                            className={`btn btn-xs capitalize`}
-                        >
-                            {reported ? reported :
-                                'Report this item'}
-                        </button>}
+                            loading ||
+                            <button
+                                disabled={reported && true}
+                                onClick={() => handleReportItem(selectedItem)}
+                                className={`btn btn-xs capitalize`}
+                            >
+                                {reported ? reported :
+                                    'Report this item'}
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
