@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <footer className="bg-gray-100">
+            <footer className="bg-[#081621] pb-6">
                 <div className="container p-6 mx-auto">
                     <div className="lg:flex">
                         <div className="w-full -mx-6 lg:w-2/5">
                             <div className="px-6">
                                 <div>
-                                    <Link to='/' className="text-xl font-bold text-gray-800 hover:text-gray-700">E-Buy</Link>
+                                    <Link to='/' className="text-2xl font-bold text-white">E-Buy</Link>
                                 </div>
 
-                                <p className="max-w-sm mt-2 text-gray-500">To get best value for money shop form our website.</p>
-                                <p className="max-w-sm mt-2 text-gray-500 text-sm">Join with us:</p>
+                                <p className="max-w-sm mt-2 text-gray-100">To get best value for money shop form our website.</p>
+                                <p className="max-w-sm mt-2 text-sm text-gray-100 mb-1">Join with us:</p>
 
                                 <div className="flex mt-0 -mx-2">
                                     <Link to='/'
-                                        className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
+                                        className="mx-2 text-gray-100 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Reddit">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -28,7 +28,7 @@ const Footer = () => {
                                     </Link>
 
                                     <Link to='/'
-                                        className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
+                                        className="mx-2 text-gray-100 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Facebook">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -38,7 +38,7 @@ const Footer = () => {
                                     </Link>
 
                                     <Link to='/'
-                                        className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500"
+                                        className="mx-2 text-gray-100 transition-colors duration-300 hover:text-blue-500"
                                         aria-label="Github">
                                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -53,41 +53,39 @@ const Footer = () => {
                         <div className="mt-6 lg:mt-0 lg:flex-1">
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 <div>
-                                    <h3 className="text-gray-700 uppercase">About</h3>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Privacy & Policy</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Shipping</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">FAQs</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">About us</Link>
+                                    <h3 className="text-white uppercase">About</h3>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Privacy & Policy</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Shipping</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">FAQs</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">About us</Link>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-gray-700 uppercase">Blog</h3>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Upcoming Phones</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Semiconductor</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Tech</Link>
+                                    <h3 className="text-white uppercase">Blog</h3>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Upcoming Phones</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Semiconductor</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Tech</Link>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-gray-700 uppercase">Products</h3>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Popular Product</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">New Arrival Product</Link>
-                                    <Link to='/' className="block mt-2 text-sm text-gray-600 hover:underline">Most sell Product</Link>
+                                    <h3 className="text-white uppercase">Products</h3>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Popular Product</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">New Arrival Product</Link>
+                                    <Link to='/' className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">Most sell Product</Link>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-gray-700 uppercase">Contact</h3>
-                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">+8801836314043</span>
-                                    <span className="block mt-2 text-sm text-gray-600 hover:underline">takbir@email.com</span>
+                                    <h3 className="text-white uppercase">Contact</h3>
+                                    <span className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">+8801836314043</span>
+                                    <span className="block mt-2 text-sm text-gray-300 hover:text-white hover:underline">takbir@email.com</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <hr className="h-px my-6 bg-gray-200 border-none" />
-
-                        <div>
-                            <p className="text-center text-gray-500">© <strong><Link to='/'>E-Buy</Link></strong> 2022 - All rights reserved</p>
-                        </div>
+                </div>
+                <hr className="h-px my-6 bg-gray-400 border-none" />
+                <div>
+                    <p className="text-center text-gray-100">© <strong><Link to='/'>E-Buy</Link></strong> 2022 - All rights reserved</p>
                 </div>
             </footer>
         </div>
